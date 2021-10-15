@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/15 16:46:38 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:54:23 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,30 @@ int	parse_line(t_info *info, char *line)
 	return (0);
 }
 
-void	ft_print_struct(t_info *info)
+void	get_map(t_list **alst, char *line)
 {
-	printf("NO = %s\n", info->no);
-	printf("SO = %s\n", info->so);
-	printf("WE = %s\n", info->we);
-	printf("EA = %s\n", info->ea);
-	printf("Fr = %d\n", info->fr);
-	printf("Fg = %d\n", info->fg);
-	printf("Fb = %d\n", info->fb);
-	printf("Cr = %d\n", info->cr);
-	printf("Cg = %d\n", info->cg);
-	printf("Cb = %d\n", info->cb);
+	t_list		*new;
+	static int	i = 0;
+
+	if (i == 0)
+		*alst = ft_lstnew(line);
+	else
+	{
+		new = ft_lstnew(line);
+		ft_lstadd_back(alst, new);
+	}
+	i++;
+}
+
+void	dumb_norm(t_info *info, char *line, t_list **lst, int *j)
+{
+	if (parse_line(info, line))
+	{
+		get_map(lst, line);
+		*j = 1;
+	}
+	else
+		free(line);
 }
 
 void	ft_parsing(t_info *info)
@@ -70,6 +82,7 @@ void	ft_parsing(t_info *info)
 	int		fd;
 	int		i;
 	int		j;
+	t_list	*lst;
 
 	i = 1;
 	j = 0;
@@ -78,17 +91,10 @@ void	ft_parsing(t_info *info)
 	{
 		i = get_next_line(fd, &line);
 		if (!j)
-		{
-			if (parse_line(info, line))
-			{
-				printf("%s\n", line);
-				j = 1;
-			}
-			else
-				free(line);
-		}
+			dumb_norm(info, line, &lst, &j);
 		else
-			printf("%s\n", line);
+			get_map(&lst, line);
 	}
 	close(fd);
+	parse_map(info, lst);
 }

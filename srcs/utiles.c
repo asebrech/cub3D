@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/14 10:55:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:48:16 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,18 @@ void	ft_exit(char *str, t_info *info, int index)
 	free(info->we);
 	free(info->ea);
 	exit(index);
+}
+
+void	ft_print_struct(t_info *info)
+{
+	printf("NO = %s\n", info->no);
+	printf("SO = %s\n", info->so);
+	printf("WE = %s\n", info->we);
+	printf("EA = %s\n", info->ea);
+	printf("Fr = %d\n", info->fr);
+	printf("Fg = %d\n", info->fg);
+	printf("Fb = %d\n", info->fb);
+	printf("Cr = %d\n", info->cr);
+	printf("Cg = %d\n", info->cg);
+	printf("Cb = %d\n", info->cb);
 }
