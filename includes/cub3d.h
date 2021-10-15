@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/14 10:53:57 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/15 13:39:26 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,15 @@ typedef struct s_info
 	int		cb;
 }				t_info;
 
-void	ft_parsing(t_info *info);
+// utiles
 void	ft_exit(char *str, t_info *info, int index);
+
+// parsing
+void	ft_parsing(t_info *info);
+void	fill_color(t_info *info, char *line);
+char	*check_int(t_info *info, char *line, int *i);
+void	fill_path(t_info *info, char *line, int index);
+void	check_file(t_info *info, char *str, int index);
+void	struct_fill(t_info *info, char *str, int nb, int index);
 
 #endif
