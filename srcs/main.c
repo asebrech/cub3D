@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/15 16:48:21 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/16 11:10:35 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	fill_struct(t_info *info)
 {
+	info->map = NULL;
 	info->no = NULL;
 	info->so = NULL;
 	info->we = NULL;
