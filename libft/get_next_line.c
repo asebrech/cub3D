@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:48:24 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/13 10:21:48 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/18 15:59:12 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	get_next_line(int fd, char **line)
 		if (ret < 0)
 			return (-1);
 		if (!*line)
-			*line = ft_calloc(1, sizeof(char));
+			*line = (char *)ft_calloc(1, sizeof(char));
 		if (ft_find_join(buf, &*line, save, fd) == 1)
 			return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/16 19:17:16 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/18 16:04:21 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	lst_to_char(t_info *info, t_list *lst)
 	tmp = lst;
 	while (tmp->next && ++i)
 		tmp = tmp->next;
-	info->map = malloc(sizeof(char *) * i);
+	info->map = malloc(sizeof(char *) * (i + 2));
 	info->map_len = i - 1;
 	i = 0;
 	while (lst->next)
@@ -30,7 +30,8 @@ void	lst_to_char(t_info *info, t_list *lst)
 		lst = lst->next;
 		i++;
 	}
-	info->map[i] = NULL;
+	info->map[i] = lst->content;
+	info->map[i + 1] = NULL;
 }
 
 void	check_char(t_info *info, int i, int j)
@@ -49,25 +50,23 @@ int	check_left_right(t_info *info, int i, int j)
 	k = j;
 	while (info->map[i][k])
 	{
-		if (!info->map[i][k + 1])
-		{
-			printf("toto\n");
+		if (info->map[i][k] == ' ')
 			return (1);
-		}
-		else if (info->map[i][k + 1] == '1')
+		if (info->map[i][k] == '1')
 			break ;
+		if (!info->map[i][k + 1])
+			return (1);
 		k++;
 	}
 	k = j;
 	while (k >= 0)
 	{
-		if (k - 1 == -1)
-		{
-			printf("hello\n");
+		if (info->map[i][k] == ' ')
 			return (1);
-		}
-		else if (info->map[i][k - 1] == '1')
+		if (info->map[i][k] == '1')
 			break ;
+		if (k - 1 == -1)
+			return (1);
 		k--;
 	}
 	return (0);
@@ -78,67 +77,55 @@ int	check_up_down(t_info *info, int i, int j)
 	int		k;
 
 	k = i;
-	printf("%c", info->map[i][j]);
 	while (info->map[k] != NULL)
 	{
-		if (info->map[k + 1] == NULL || !info->map[k + 1][j])
-		{
-			printf("there\n");
+		if (info->map[k][j] == ' ')
 			return (1);
-		}
-		else if (info->map[k + 1][j] == '1')
+		if (info->map[k][j] == '1')
 			break ;
+		if (info->map[k] == NULL || !(info->map[k][j]))
+			return (1);
 		k++;
 	}
 	k = i;
 	while (k >= 0)
 	{
-		if (k - 1 == -1 || !info->map[k][j])
-		{
-			printf("the way\n");
+		if (info->map[k][j] == ' ')
 			return (1);
-		}
-		else if (info->map[k - 1][j] == '1')
+		if (info->map[k][j] == '1')
 			break ;
+		if (k - 1 == -1 || !info->map[k][j])
+			return (1);
 		k--;
 	}
 	return (0);
 }
 
-void	check_wall(t_info *info)
+void	parse_map(t_info *info, t_list *lst)
 {
 	int		i;
 	int		j;
-	int		k;
+	int		c;
 
+	c = 0;
 	i = -1;
+	lst_to_char(info, lst);
 	while (info->map[++i] != NULL)
 	{
 		if (!info->map[i])
-			ft_exit("wall is not closed 1\n", info, 1);
+			ft_exit("wall is not closed\n", info, 1);
 		j = -1;
 		while (info->map[i][++j])
 		{
-			//printf("%c", info->map[i][j]);
 			check_char(info, i, j);
-			k = j;
-			while (info->map[i][k] && info->map[i][k] == ' ')
-				k++;
-			if (!info->map[i][k] || j == 0)
-				j = k - 1;
-			else if (info->map[i][j] == '0' || info->map[i][j] == ' '
-				|| info->map[i][j] == 'N')
-				if (check_left_right(info, i, j) || check_up_down(info, i, j))
-					ft_exit("wall is not closed 2\n", info, 1);
-			k = j;
+			if (info->map[i][j] == '0' || (info->map[i][j] == 'N' && c++)
+				|| (info->map[i][j] == 'S' && c++)
+				|| (info->map[i][j] == 'E' && c++)
+				|| (info->map[i][j] == 'W' && c++))
+				if (check_up_down(info, i, j)
+					|| check_left_right(info, i, j) || c > 1)
+					ft_exit("wall is not closed or duplicated spawn character\n",
+						info, 1);
 		}
-		printf(" end \n");
 	}
-}
-
-void	parse_map(t_info *info, t_list *lst)
-{
-	lst_to_char(info, lst);
-	check_wall(info);
-	printf("succes !\n");
 }

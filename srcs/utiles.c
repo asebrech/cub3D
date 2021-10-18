@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/16 11:52:14 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/18 16:09:32 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_exit(char *str, t_info *info, int index)
 	free(info->we);
 	free(info->ea);
 	i = -1;
-	while (info->map != NULL && info->map[++i] != NULL)
+	while (info->map && info->map[++i] != NULL)
 		free(info->map[i]);
 	free(info->map);
 	exit(index);

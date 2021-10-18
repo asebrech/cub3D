@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/16 18:20:51 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/18 16:05:02 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,17 @@ int	parse_line(t_info *info, char *line)
 	return (0);
 }
 
-void	get_map(t_list **alst, char *line)
+void	get_map(t_list **alst, char *line, t_info *info)
 {
 	t_list		*new;
 	static int	i = 0;
+	int			j;
 
+	j = 0;
+	while (line[j] && ft_isspace(line[j]))
+		j++;
+	if (line[i] == '\0')
+		ft_exit("forbidden new line in the map\n", info, 1);
 	if (i == 0)
 		*alst = ft_lstnew(line);
 	else
@@ -69,7 +75,7 @@ void	dumb_norm(t_info *info, char *line, t_list **lst, int *j)
 {
 	if (parse_line(info, line))
 	{
-		get_map(lst, line);
+		get_map(lst, line, info);
 		*j = 1;
 	}
 	else
@@ -93,7 +99,7 @@ void	ft_parsing(t_info *info)
 		if (!j)
 			dumb_norm(info, line, &lst, &j);
 		else
-			get_map(&lst, line);
+			get_map(&lst, line, info);
 	}
 	close(fd);
 	parse_map(info, lst);
