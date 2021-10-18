@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/18 16:05:02 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/18 16:45:19 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_map(t_list **alst, char *line, t_info *info)
 	j = 0;
 	while (line[j] && ft_isspace(line[j]))
 		j++;
-	if (line[i] == '\0')
+	if (line[j] == '\0')
 		ft_exit("forbidden new line in the map\n", info, 1);
 	if (i == 0)
 		*alst = ft_lstnew(line);
