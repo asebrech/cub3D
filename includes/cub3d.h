@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/16 15:47:26 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:43:18 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 typedef struct s_info
 {
+	void	*mlx;
+	void	*win;
+	int		x;
+	int		y;
 	char	**map;
 	int		map_len;
 	char	*path;
@@ -46,5 +50,9 @@ void	fill_path(t_info *info, char *line, int index);
 void	check_file(t_info *info, char *str, int index);
 void	struct_fill(t_info *info, char *str, int nb, int index);
 void	parse_map(t_info *info, t_list *lst);
+
+// cub3d
+void	cub3d(t_info *info);
+void	minimap(t_info *info);
 
 #endif
