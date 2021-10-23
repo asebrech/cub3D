@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/22 14:43:18 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/23 16:50:19 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../minilibx/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_info
 {
@@ -24,7 +25,6 @@ typedef struct s_info
 	int		x;
 	int		y;
 	char	**map;
-	int		map_len;
 	char	*path;
 	char	*no;
 	char	*so;
@@ -36,6 +36,9 @@ typedef struct s_info
 	int		cr;
 	int		cg;
 	int		cb;
+	char	player;
+	int		angle;
+	int		minicub;
 }				t_info;
 
 // utiles

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/22 16:18:44 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/23 16:18:10 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,20 @@ static int	ft_close(int keycode, t_info *info)
 	return (0);
 }
 
+int	render_next_frame(t_info *info)
+{
+	mlx_clear_window(info->mlx, info->win);
+	minimap(info);
+	return (0);
+}
+
 void	cub3d(t_info *info)
 {
-	info->x = 1800;
-	info->y = 900;
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, &info);
 	mlx_hook(info->win, 17, 1L << 15, ft_close, &info);
 	minimap(info);
+	//mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);
 }

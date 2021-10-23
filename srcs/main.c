@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/22 11:52:09 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/23 16:31:51 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	fill_struct(t_info *info)
 	info->cr = -1;
 	info->cg = -1;
 	info->cb = -1;
+	info->x = 1800;
+	info->y = 900;
+	info->minicub = 64;
 }
 
 static void	check_arg(char *str, t_info *info)

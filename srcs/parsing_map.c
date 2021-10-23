@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/18 16:04:21 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/23 16:51:35 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	lst_to_char(t_info *info, t_list *lst)
 	while (tmp->next && ++i)
 		tmp = tmp->next;
 	info->map = malloc(sizeof(char *) * (i + 2));
-	info->map_len = i - 1;
 	i = 0;
 	while (lst->next)
 	{
@@ -41,6 +40,11 @@ void	check_char(t_info *info, int i, int j)
 		&& info->map[i][j] != 'E' && info->map[i][j] != 'S'
 		&& info->map[i][j] != ' '))
 		ft_exit("forbidden character in the map\n", info, 1);
+	if (info->map[i][j] != '1' && info->map[i][j] != ' '
+		&& info->map[i][j] != '0')
+		info->player = info->map[i][j];
+		if (info->player == 'N')
+		info->player = info->map[i][j];
 }
 
 int	check_left_right(t_info *info, int i, int j)
