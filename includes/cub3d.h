@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/25 15:43:01 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:10:45 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_info
 // utiles
 void	ft_exit(char *str, t_info *info, int index);
 void	ft_print_struct(t_info *info);
+double	to_radian(double nb);
 
 // parsing
 void	ft_parsing(t_info *info);
@@ -58,7 +59,9 @@ void	parse_map(t_info *info, t_list *lst);
 
 // cub3d
 void	cub3d(t_info *info);
+void	move(t_info *info, int keycode);
 void	minimap(t_info *info);
 void	find_wall(t_info *info);
+void	move(t_info *info, int keycode);
 
 #endif

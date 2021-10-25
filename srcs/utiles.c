@@ -6,11 +6,16 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/18 16:09:32 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:45:30 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+double	to_radian(double nb)
+{
+	return (nb * PI / 180);
+}
 
 void	ft_exit(char *str, t_info *info, int index)
 {

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/23 16:18:10 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:22:51 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	key_hook(int keycode, t_info *info)
 {
 	if (keycode == 53)
 	{
-		//mlx_destroy_window(info->mlx, info->win);
+		mlx_destroy_window(info->mlx, info->win);
 		exit(0);
 	}
-	/*else
-		move(info, keycode); */
+	else
+		move(info, keycode);
 	info = NULL;
 	return (0);
 }
@@ -44,9 +44,9 @@ void	cub3d(t_info *info)
 {
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
-	mlx_hook(info->win, 2, 1L << 0, key_hook, &info);
-	mlx_hook(info->win, 17, 1L << 15, ft_close, &info);
-	minimap(info);
-	//mlx_loop_hook(info->mlx, render_next_frame, info);
+	//minimap(info);
+	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
+	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
+	mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);
 }

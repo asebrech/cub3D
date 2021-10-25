@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/25 15:43:39 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 19:22:33 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	dda(double *x, double *y, t_info *info)
 {
-	int		dx;
-	int		dy;
+	double	dx;
+	double	dy;
 	int		step;
 	double	xinc;
 	double	yinc;
 
 	dx = x[1] - x[0];
 	dy = y[1] - y[0];
-	if (abs(dx) > abs(dy))
-		step = abs(dx);
+	if (fabs(dx) > fabs(dy))
+		step = fabs(dx);
 	else
-		step = abs(dy);
+		step = fabs(dy);
 	xinc = dx / step;
 	yinc = dy / step;
 	while (step > 0)
@@ -38,64 +38,55 @@ void	dda(double *x, double *y, t_info *info)
 	}	
 }
 
-void	print_player(int i, int j, t_info *info)
+void	player_start(int i, int j, t_info *info)
 {
-	static int	p = 0;
-	double		x[2];
-	double		y[2];
-
-	p++;
+	info->px = j * info->minicub + info->minicub / 2;
+	info->py = i * info->minicub + info->minicub / 2;
 	if (info->player == 'N')
-		info->angle = 30;
+		info->angle = 90;
 	else if (info->player == 'S')
 		info->angle = 270;
 	else if (info->player == 'E')
 		info->angle = 0;
 	else if (info->player == 'W')
 		info->angle = 180;
-	printf("%f\n", info->angle);
-	if (p == 1)
-	{
-		info->px = j * info->minicub + info->minicub / 2;
-		info->py = i * info->minicub + info->minicub / 2;
-	}
-	x[0] = info->px;
-	y[0] = info->py;
-	x[1] = cos(30 * PI / 180) * 10;
-	y[1] = sin(30 * PI / 180) * 10;
-	mlx_pixel_put(info->mlx, info->win, x[0], y[0], 0x00FF0000);
-	mlx_pixel_put(info->mlx, info->win, x[1] + info->px, y[1] + info->py, 0x00FF0000);
-	printf("%f\n", x[0]);
-	printf("%f\n", y[0]);
-	printf("%f\n", x[1]);
-	printf("%f\n", y[1]);
-	//find_wall(info);
-	//dda(x, y, info);
 }
 
-void	print_p(int i, int j, t_info *info)
+void	player_dir(t_info *info)
 {
-	int		k;
-	int		l;
+	double		x[2];
+	double		y[2];
+
+	x[0] = info->px;
+	y[0] = info->py;
+	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px;
+	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1 + info->py;
+	dda(x, y, info);
+}
+
+void	player_pos(t_info *info)
+{
+	int		i;
+	int		j;
 	int		x;
 	int		y;
 
-	x = j * info->minicub + info->minicub / 4;
-	y = i * info->minicub + info->minicub / 4;
-	l = -1;
-	while (++l < info->minicub / 2)
+	x = info->px - info->minicub / 4;
+	y = info->py - info->minicub / 4;
+	i = -1;
+	while (++i < info->minicub / 2)
 	{
-		k = -1;
-		while (++k < info->minicub / 2)
+		j = -1;
+		while (++j < info->minicub / 2)
 		{
-			if (info->map[i][j])
-				mlx_pixel_put(info->mlx, info->win, x + k, y, 0x0000FF00);
+			if (x + j <= info->x && y <= info->y)
+				mlx_pixel_put(info->mlx, info->win, x + j, y, 0x0000FF00);
 		}
 		y++;
 	}
 }
 
-void	print_cub(int i, int j, t_info *info)
+void	print_wall(int i, int j, t_info *info)
 {
 	int		k;
 	int		l;
@@ -104,14 +95,36 @@ void	print_cub(int i, int j, t_info *info)
 
 	x = j * info->minicub;
 	y = i * info->minicub;
-	l = 0;
+	l = -1;
 	while (++l < info->minicub)
 	{
-		k = 0;
+		k = -1;
 		while (++k < info->minicub)
 		{
-			if (info->map[i][j])
+			if (x + k <= info->x && y <= info->y)
 				mlx_pixel_put(info->mlx, info->win, x + k, y, 0x000000FF);
+		}
+		y++;
+	}
+}
+
+void	print_floor(int i, int j, t_info *info)
+{
+	int		k;
+	int		l;
+	int		x;
+	int		y;
+
+	x = j * info->minicub;
+	y = i * info->minicub;
+	l = -1;
+	while (++l < info->minicub)
+	{
+		k = -1;
+		while (++k < info->minicub)
+		{
+			if ((x + k <= info->x && y <= info->y) && (l == 0 || l == info->minicub|| k == 0 || k == info->minicub))
+				mlx_pixel_put(info->mlx, info->win, x + k, y, 0x00FF00FF);
 		}
 		y++;
 	}
@@ -119,9 +132,11 @@ void	print_cub(int i, int j, t_info *info)
 
 void	minimap(t_info *info)
 {
-	int		i;
-	int		j;
+	static int	p = 0;
+	int			i;
+	int			j;
 
+	p++;
 	i = -1;
 	while (info->map[++i] != NULL)
 	{
@@ -129,12 +144,14 @@ void	minimap(t_info *info)
 		while (info->map[i][++j])
 		{
 			if (info->map[i][j] == '1')
-				print_cub(i, j, info);
-			else if (info->map[i][j] == info->player)
-			{
-				print_p(i, j, info);
-				print_player(i, j, info);
-			}
+				print_wall(i, j, info);
+			else if (info->map[i][j] != ' ')
+				print_floor(i, j, info);
+			if (info->map[i][j] == info->player && p == 1)
+				player_start(i, j, info);
 		}
 	}
+	player_pos(info);
+	player_dir(info);
+	//find_wall(info);
 }
