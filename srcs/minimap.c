@@ -6,19 +6,19 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/23 16:50:57 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:43:39 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	dda(float *x, float *y, t_info *info)
+void	dda(double *x, double *y, t_info *info)
 {
 	int		dx;
 	int		dy;
 	int		step;
-	float	xinc;
-	float	yinc;
+	double	xinc;
+	double	yinc;
 
 	dx = x[1] - x[0];
 	dy = y[1] - y[0];
@@ -38,16 +38,39 @@ void	dda(float *x, float *y, t_info *info)
 	}	
 }
 
-void	print_dir(int i, int j, t_info *info)
+void	print_player(int i, int j, t_info *info)
 {
-	float	x[2];
-	float	y[2];
+	static int	p = 0;
+	double		x[2];
+	double		y[2];
 
-	x[0] = j * info->minicub + info->minicub / 2;
-	x[1] = j * info->minicub + info->minicub;
-	y[0] = i * info->minicub + info->minicub / 2;
-	y[1] = i * info->minicub + info->minicub;
-	dda(x, y, info);
+	p++;
+	if (info->player == 'N')
+		info->angle = 30;
+	else if (info->player == 'S')
+		info->angle = 270;
+	else if (info->player == 'E')
+		info->angle = 0;
+	else if (info->player == 'W')
+		info->angle = 180;
+	printf("%f\n", info->angle);
+	if (p == 1)
+	{
+		info->px = j * info->minicub + info->minicub / 2;
+		info->py = i * info->minicub + info->minicub / 2;
+	}
+	x[0] = info->px;
+	y[0] = info->py;
+	x[1] = cos(30 * PI / 180) * 10;
+	y[1] = sin(30 * PI / 180) * 10;
+	mlx_pixel_put(info->mlx, info->win, x[0], y[0], 0x00FF0000);
+	mlx_pixel_put(info->mlx, info->win, x[1] + info->px, y[1] + info->py, 0x00FF0000);
+	printf("%f\n", x[0]);
+	printf("%f\n", y[0]);
+	printf("%f\n", x[1]);
+	printf("%f\n", y[1]);
+	//find_wall(info);
+	//dda(x, y, info);
 }
 
 void	print_p(int i, int j, t_info *info)
@@ -110,7 +133,7 @@ void	minimap(t_info *info)
 			else if (info->map[i][j] == info->player)
 			{
 				print_p(i, j, info);
-				print_dir(i, j, info);
+				print_player(i, j, info);
 			}
 		}
 	}

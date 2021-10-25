@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/23 16:51:35 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 09:28:52 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	check_char(t_info *info, int i, int j)
 		ft_exit("forbidden character in the map\n", info, 1);
 	if (info->map[i][j] != '1' && info->map[i][j] != ' '
 		&& info->map[i][j] != '0')
-		info->player = info->map[i][j];
-		if (info->player == 'N')
 		info->player = info->map[i][j];
 }
 

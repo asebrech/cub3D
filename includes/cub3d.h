@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/23 16:50:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:43:01 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
-
+# define PI 3.14159
 typedef struct s_info
 {
 	void	*mlx;
@@ -37,7 +37,9 @@ typedef struct s_info
 	int		cg;
 	int		cb;
 	char	player;
-	int		angle;
+	double	angle;
+	int		px;
+	int		py;
 	int		minicub;
 }				t_info;
 
@@ -57,5 +59,6 @@ void	parse_map(t_info *info, t_list *lst);
 // cub3d
 void	cub3d(t_info *info);
 void	minimap(t_info *info);
+void	find_wall(t_info *info);
 
 #endif
