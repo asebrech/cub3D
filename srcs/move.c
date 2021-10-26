@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 13:26:50 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:00:41 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	move_left(t_info *info)
 	if (info->angle == 360)
 		info->angle = 0;
 	else
-		info->angle += 10;
+		info->angle += 1;
 	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }
@@ -28,7 +28,7 @@ void	move_right(t_info *info)
 	if (info->angle == 0)
 		info->angle = 360;
 	else
-		info->angle -= 10;
+		info->angle -= 1;
 	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }

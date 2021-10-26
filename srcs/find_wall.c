@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:03:40 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 14:00:59 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:58:36 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	find_b(t_info *info, double *b)
 	b[1] = info->py + (info->px - b[0]) * tan(to_radian(info->angle));
 	tmpy = floor(b[1] / info->minicub);
 	tmpx = floor(b[0] / info->minicub);
+	if (tmpy < 0 || tmpx < 0 || tmpy >= info->map_len)
+			return (0);
 	if (info->map[tmpy][tmpx] == '1')
 		return (0);
 	return (1);
@@ -97,8 +99,8 @@ void	final_wall_b(t_info *info, double *b)
 
 	yb = 0;
 	xb = 0;
-	if ((info->angle <= 90 && info->angle >= 0)
-		|| (info->angle <= 360 && info->angle >= 270))
+	if ((info->angle < 90 && info->angle > 0)
+		|| (info->angle < 360 && info->angle > 270))
 		xb = info->minicub;
 	else if (info->angle > 90 && info->angle < 270)
 		xb = info->minicub * -1;
@@ -110,18 +112,21 @@ void	final_wall_b(t_info *info, double *b)
 		xb = info->minicub * -1;
 	*/
 	yb = info->minicub * tan(to_radian(info->angle));
+	write(1, "avant\n", 6);
 	while (1)
 	{
 		b[1] = b[1] + yb;
 		b[0] = b[0] + xb;
 		tmpy = floor(b[1] / info->minicub);
 		tmpx = floor(b[0] / info->minicub);
-		if (tmpx < 0 || tmpy < 0 || !info->map[tmpy][tmpx])
-			write(1, "ok\n", 3);
+		printf("y ; %d\n", tmpy);
+		printf("x ; %d\n", tmpx);
+		if (tmpy < 0 || tmpx < 0 || tmpy >= info->map_len)
+			break ;
 		if (!info->map[tmpy][tmpx] || info->map[tmpy][tmpx] == '1')
 			break ;
 	}
-	write (1, "test\n", 5);
+	write(1, "apres\n", 6);
 }
 
 void	find_wall(t_info *info, double *a, double *b)

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 14:00:36 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:50:18 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	player_start(int i, int j, t_info *info)
 	else if (info->player == 'E')
 		info->angle = 0;
 	else if (info->player == 'W')
-		info->angle = 180;
+		info->angle = 260;
 }
 
 void	player_dir(t_info *info)
@@ -77,7 +77,7 @@ void	player_dir2(t_info *info)
 	y[0] = info->py;
 	x[1] =	b[0];
 	y[1] =	b[1];
-	//dda(x, y, info);
+	dda(x, y, info);
 }
 
 void	player_pos(t_info *info)
