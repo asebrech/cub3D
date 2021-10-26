@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/25 19:22:33 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/26 14:00:36 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void	dda(double *x, double *y, t_info *info)
 	yinc = dy / step;
 	while (step > 0)
 	{
-		mlx_pixel_put(info->mlx, info->win,
-			round(x[0]), round(y[0]), 0x00FF0000);
+		if (x[0] >= 0 && y[0] >= 0 && x[0] <= info->x && y[0] <= info->y)
+			mlx_pixel_put(info->mlx, info->win,
+				round(x[0]), round(y[0]), 0x00FF0000);
 		x[0] = x[0] + xinc;
 		y[0] = y[0] + yinc;
 		step--;
@@ -62,6 +63,21 @@ void	player_dir(t_info *info)
 	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px;
 	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1 + info->py;
 	dda(x, y, info);
+}
+
+void	player_dir2(t_info *info)
+{
+	double		x[2];
+	double		y[2];
+	double		a[2];
+	double		b[2];
+
+	find_wall(info, a, b);
+	x[0] = info->px;
+	y[0] = info->py;
+	x[1] =	b[0];
+	y[1] =	b[1];
+	//dda(x, y, info);
 }
 
 void	player_pos(t_info *info)
@@ -152,6 +168,6 @@ void	minimap(t_info *info)
 		}
 	}
 	player_pos(info);
-	player_dir(info);
-	//find_wall(info);
+	//player_dir(info);
+	player_dir2(info);
 }

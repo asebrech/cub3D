@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/25 19:10:45 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:22:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_info
 	int		px;
 	int		py;
 	int		minicub;
+	int		cub;
 }				t_info;
 
 // utiles
@@ -61,7 +62,7 @@ void	parse_map(t_info *info, t_list *lst);
 void	cub3d(t_info *info);
 void	move(t_info *info, int keycode);
 void	minimap(t_info *info);
-void	find_wall(t_info *info);
+void	find_wall(t_info *info, double *a, double *b);
 void	move(t_info *info, int keycode);
 
 #endif
