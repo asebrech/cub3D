@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 11:32:49 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:20:54 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_hook(int keycode, t_info *info)
 {
-	printf("angle %f\n", info->angle);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(info->mlx, info->win);
@@ -26,9 +25,11 @@ int	key_hook(int keycode, t_info *info)
 	return (0);
 }
 
-static int	ft_close(int keycode, t_info *info)
+int	ft_close(int keycode, t_info *info)
 {
 	keycode = 0;
+	//mlx_destroy_window(info->mlx, info->win);
+	//ft_exit(NULL, info, 0);
 	info = NULL;
 	exit(0);
 	return (0);

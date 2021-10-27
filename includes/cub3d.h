@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 14:09:43 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 14:59:41 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@
 # include <fcntl.h>
 # include <math.h>
 # define PI 3.14159
+
 typedef struct s_info
 {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	void	*mlx;
 	void	*win;
 	int		x;
@@ -46,6 +52,7 @@ typedef struct s_info
 }				t_info;
 
 // utiles
+void	my_mlx_pixel_put(t_info *data, int x, int y, int color);
 void	ft_exit(char *str, t_info *info, int index);
 void	ft_print_struct(t_info *info);
 double	to_radian(double nb);

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 12:01:01 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:21:24 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 void	move_left(t_info *info)
 {
 	if (info->angle == 360)
-		info->angle = 0;
+		info->angle = 1;
 	else
 		info->angle += 1;
-	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }
 
 void	move_right(t_info *info)
 {
-
-	if (info->angle == 0)
+	if (info->angle == 1)
 		info->angle = 360;
 	else
 		info->angle -= 1;
-	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }
 
@@ -37,7 +34,6 @@ void	move_up(t_info *info)
 {
 	info->px = round(cos(to_radian(info->angle)) * 5) + info->px;
 	info->py = round(sin(to_radian(info->angle)) * 5) * -1 + info->py;
-	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }
 
@@ -45,7 +41,6 @@ void	move_down(t_info *info)
 {
 	info->px = round(cos(to_radian(info->angle)) * 5) * -1 + info->px;
 	info->py = round(sin(to_radian(info->angle)) * 5) + info->py;
-	mlx_clear_window(info->mlx, info->win);
 	minimap(info);
 }
 

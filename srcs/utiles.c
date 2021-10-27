@@ -6,11 +6,19 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/25 19:45:30 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:00:13 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	my_mlx_pixel_put(t_info *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 double	to_radian(double nb)
 {
