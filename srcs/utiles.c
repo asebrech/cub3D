@@ -6,11 +6,25 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 15:00:13 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:34:29 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	player_start(int i, int j, t_info *info)
+{
+	info->px = j * info->minicub + info->minicub / 2;
+	info->py = i * info->minicub + info->minicub / 2;
+	if (info->player == 'N')
+		info->angle = 90;
+	else if (info->player == 'S')
+		info->angle = 270;
+	else if (info->player == 'E')
+		info->angle = 360;
+	else if (info->player == 'W')
+		info->angle = 180;
+}
 
 void	my_mlx_pixel_put(t_info *data, int x, int y, int color)
 {

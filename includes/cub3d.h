@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 14:59:41 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:21:21 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	my_mlx_pixel_put(t_info *data, int x, int y, int color);
 void	ft_exit(char *str, t_info *info, int index);
 void	ft_print_struct(t_info *info);
 double	to_radian(double nb);
+void	player_start(int i, int j, t_info *info);
 
 // parsing
 void	ft_parsing(t_info *info);
@@ -70,7 +71,12 @@ void	parse_map(t_info *info, t_list *lst);
 void	cub3d(t_info *info);
 void	move(t_info *info, int keycode);
 void	minimap(t_info *info);
-void	find_wall(t_info *info, double *a, double *b);
+void	find_wall(t_info *info, double *c);
 void	move(t_info *info, int keycode);
+
+// find wall
+int		find_a(t_info *info, double *b);
+void	final_wall_a_1(t_info *info, double *b, int yb, int xb);
+void	final_wall_a(t_info *info, double *a);
 
 #endif

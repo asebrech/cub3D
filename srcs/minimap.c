@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 15:58:05 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:21:00 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ void	dda(double *x, double *y, t_info *info)
 	}	
 }
 
-void	player_start(int i, int j, t_info *info)
-{
-	info->px = j * info->minicub + info->minicub / 2;
-	info->py = i * info->minicub + info->minicub / 2;
-	if (info->player == 'N')
-		info->angle = 90;
-	else if (info->player == 'S')
-		info->angle = 270;
-	else if (info->player == 'E')
-		info->angle = 360;
-	else if (info->player == 'W')
-		info->angle = 180;
-}
-
 void	player_dir(t_info *info)
 {
 	double		x[2];
@@ -68,26 +54,13 @@ void	player_dir2(t_info *info)
 {
 	double		x[2];
 	double		y[2];
-	double		a[2];
-	double		b[2];
+	double		c[2];
 
-	find_wall(info, a, b);
+	find_wall(info, c);
 	x[0] = info->px;
 	y[0] = info->py;
-	//x[1] = fabs(info->px - a[0]) / cos(to_radian(info->angle));
-	//y[1] = fabs(info->px - b[0]) / cos(to_radian(info->angle));
-	x[1] = sqrt(pow((info->px - a[0]), 2) + pow((info->py - a[1]), 2));
-	y[1] = sqrt(pow((info->px - b[0]), 2) + pow((info->py - b[1]), 2));
-	if (x[1] < y[1])
-	{
-		x[1] =	a[0];
-		y[1] =	a[1];
-	}
-	else
-	{
-		x[1] =	b[0];
-		y[1] =	b[1];
-	}
+	x[1] = c[0];
+	y[1] = c[1];
 	dda(x, y, info);
 }
 
@@ -144,13 +117,13 @@ void	print_floor(int i, int j, t_info *info)
 
 	x = j * info->minicub;
 	y = i * info->minicub;
-	l = -1;
+	l = 0;
 	while (++l < info->minicub)
 	{
-		k = -1;
+		k = 0;
 		while (++k < info->minicub)
 		{
-			if ((x + k <= info->x && y <= info->y) && (l == 0 || l == info->minicub|| k == 0 || k == info->minicub))
+			if (x + k <= info->x && y <= info->y)
 				my_mlx_pixel_put(info, x + k, y, 0x00FFFFFF);
 		}
 		y++;
@@ -177,8 +150,6 @@ void	minimap(t_info *info)
 				print_wall(i, j, info);
 			else if (info->map[i][j] != ' ')
 				print_floor(i, j, info);
-			if (info->map[i][j] == info->player && p == 1)
-				player_start(i, j, info);
 		}
 	}
 	player_pos(info);
