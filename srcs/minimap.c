@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 15:50:18 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 11:34:00 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	player_start(int i, int j, t_info *info)
 	else if (info->player == 'E')
 		info->angle = 0;
 	else if (info->player == 'W')
-		info->angle = 260;
+		info->angle = 100;
 }
 
 void	player_dir(t_info *info)
@@ -140,7 +140,7 @@ void	print_floor(int i, int j, t_info *info)
 		while (++k < info->minicub)
 		{
 			if ((x + k <= info->x && y <= info->y) && (l == 0 || l == info->minicub|| k == 0 || k == info->minicub))
-				mlx_pixel_put(info->mlx, info->win, x + k, y, 0x00FF00FF);
+				mlx_pixel_put(info->mlx, info->win, x + k, y, 0x00FFFFFF);
 		}
 		y++;
 	}

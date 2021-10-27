@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/26 15:29:39 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/27 11:32:49 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_close(int keycode, t_info *info)
 {
 	keycode = 0;
 	info = NULL;
-	ft_exit(NULL, info, 0);
+	exit(0);
 	return (0);
 }
 
