@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/28 13:28:45 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 17:54:12 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,40 @@ void	dda(double *x, double *y, t_info *info)
 		step--;
 	}	
 }
+/*
+void	player_dir2(t_info *info)
+{
+	double		x[2];
+	double		y[2];
+	double		c[2];
+	double		angle;
+	double		beta;
+	double		lenght;
+	double		i;
+
+	beta = info->fov / 2;
+	angle = info->angle - info->fov / 2;
+	i = -1.0;
+	while (++i <= info->x)
+	{
+		if (angle > 360.0)
+			angle -= 360.0;
+		if (angle < 0.0)
+			angle += 360.0;
+		lenght = find_wall(info, c, angle);
+		lenght = lenght * cos(to_radian(beta));
+		x[0] = info->px;
+		y[0] = info->py;
+		x[1] = c[0];
+		y[1] = c[1];
+		dda(x, y, info);
+		angle += info->fov / info->x;
+		if (i < info->x / 2)
+			beta -= info->fov / info->x;
+		else
+			beta += info->fov / info->x;
+	}
+}*/
 
 void	player_dir(t_info *info)
 {
@@ -48,32 +82,6 @@ void	player_dir(t_info *info)
 	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px;
 	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1 + info->py;
 	dda(x, y, info);
-}
-
-void	player_dir2(t_info *info)
-{
-	double		x[2];
-	double		y[2];
-	double		c[2];
-	double		angle;
-	double		i;
-
-	angle = info->angle - info->fov / 2;
-	i = -1.0;
-	while (++i < info->plane)
-	{
-		if (angle > 360.0)
-			angle -= 360.0;
-		if (angle < 0.0)
-			angle += 360.0;
-		find_wall(info, c, angle);
-		x[0] = info->px;
-		y[0] = info->py;
-		x[1] = c[0];
-		y[1] = c[1];
-		dda(x, y, info);
-		angle += info->fov / info->plane;
-	}
 }
 
 void	player_pos(t_info *info)
@@ -144,14 +152,9 @@ void	print_floor(int i, int j, t_info *info)
 
 void	minimap(t_info *info)
 {
-	static int	p = 0;
 	int			i;
 	int			j;
 
-	p++;
-	info->img = mlx_new_image(info->mlx, info->x, info->y);
-	info->addr = mlx_get_data_addr(info->img, &info->bits_per_pixel,
-			&info->line_length, &info->endian);
 	i = -1;
 	while (info->map[++i] != NULL)
 	{
@@ -165,8 +168,6 @@ void	minimap(t_info *info)
 		}
 	}
 	player_pos(info);
-	//player_dir(info);
-	player_dir2(info);
-	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
-	mlx_destroy_image(info->mlx, info->img);
+	player_dir(info);
+	//player_dir2(info);
 }

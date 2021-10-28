@@ -6,38 +6,40 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/28 13:21:53 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 17:56:13 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	move_right(t_info *info, double i)
+void	look_left(t_info *info, double j)
 {
-	info->px = round(sin(to_radian(info->angle)) * i) + info->px;
-	info->py = round(cos(to_radian(info->angle)) * i) * -1.0 + info->py;
-	minimap(info);
+	info->angle += j;
+	if (info->angle > 360.0)
+		info->angle -= 360.0;
+	print_screen(info);
 }
 
-void	move_left(t_info *info, double i)
+void	look_right(t_info *info, double j)
 {
-	info->px = round(sin(to_radian(info->angle)) * i) * -1.0 + info->px;
-	info->py = round(cos(to_radian(info->angle)) * i) + info->py;
-	minimap(info);
+	info->angle -= j;
+	if (info->angle < 0.0)
+		info->angle += 360.0;
+	print_screen(info);
 }
 
-void	move_up(t_info *info, double i)
+void	move_up(t_info *info, double i, double angle)
 {
-	info->px = round(cos(to_radian(info->angle)) * i) + info->px;
-	info->py = round(sin(to_radian(info->angle)) * i) * -1.0 + info->py;
-	minimap(info);
+	info->px = round(cos(to_radian(angle)) * i) + info->px;
+	info->py = round(sin(to_radian(angle)) * i) * -1.0 + info->py;
+	print_screen(info);
 }
 
-void	move_down(t_info *info, double i)
+void	move_down(t_info *info, double i, double angle)
 {
-	info->px = round(cos(to_radian(info->angle)) * i) * -1.0 + info->px;
-	info->py = round(sin(to_radian(info->angle)) * i) + info->py;
-	minimap(info);
+	info->px = round(cos(to_radian(angle)) * i) * -1.0 + info->px;
+	info->py = round(sin(to_radian(angle)) * i) + info->py;
+	print_screen(info);
 }
 
 void	move(t_info *info, int keycode)
@@ -45,16 +47,16 @@ void	move(t_info *info, int keycode)
 	double	i;
 	double	j;
 
-	i = 5.0;
-	j = 2.0;
+	i = 8.0;
+	j = 6.0;
 	if (keycode == 13)
-		move_up(info, i);
+		move_up(info, i, info->angle);
 	if (keycode == 1)
-		move_down(info, i);
+		move_down(info, i, info->angle);
 	if (keycode == 0)
-		move_left(info, i);
+		move_up(info, i, info->angle + 90.0);
 	if (keycode == 2)
-		move_right(info, i);
+		move_up(info, i, info->angle - 90.0);
 	if (keycode == 123)
 		look_left(info, j);
 	if (keycode == 124)
