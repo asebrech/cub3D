@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 18:21:00 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 13:28:45 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,25 @@ void	player_dir2(t_info *info)
 	double		x[2];
 	double		y[2];
 	double		c[2];
+	double		angle;
+	double		i;
 
-	find_wall(info, c);
-	x[0] = info->px;
-	y[0] = info->py;
-	x[1] = c[0];
-	y[1] = c[1];
-	dda(x, y, info);
+	angle = info->angle - info->fov / 2;
+	i = -1.0;
+	while (++i < info->plane)
+	{
+		if (angle > 360.0)
+			angle -= 360.0;
+		if (angle < 0.0)
+			angle += 360.0;
+		find_wall(info, c, angle);
+		x[0] = info->px;
+		y[0] = info->py;
+		x[1] = c[0];
+		y[1] = c[1];
+		dda(x, y, info);
+		angle += info->fov / info->plane;
+	}
 }
 
 void	player_pos(t_info *info)

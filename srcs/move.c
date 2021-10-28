@@ -6,52 +6,57 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 17:31:03 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 13:21:53 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	move_left(t_info *info)
+void	move_right(t_info *info, double i)
 {
-	if (info->angle == 360)
-		info->angle = 1;
-	else
-		info->angle += 1;
+	info->px = round(sin(to_radian(info->angle)) * i) + info->px;
+	info->py = round(cos(to_radian(info->angle)) * i) * -1.0 + info->py;
 	minimap(info);
 }
 
-void	move_right(t_info *info)
+void	move_left(t_info *info, double i)
 {
-	if (info->angle == 1)
-		info->angle = 360;
-	else
-		info->angle -= 1;
+	info->px = round(sin(to_radian(info->angle)) * i) * -1.0 + info->px;
+	info->py = round(cos(to_radian(info->angle)) * i) + info->py;
 	minimap(info);
 }
 
-void	move_up(t_info *info)
+void	move_up(t_info *info, double i)
 {
-	info->px = round(cos(to_radian(info->angle)) * 5) + info->px;
-	info->py = round(sin(to_radian(info->angle)) * 5) * -1 + info->py;
+	info->px = round(cos(to_radian(info->angle)) * i) + info->px;
+	info->py = round(sin(to_radian(info->angle)) * i) * -1.0 + info->py;
 	minimap(info);
 }
 
-void	move_down(t_info *info)
+void	move_down(t_info *info, double i)
 {
-	info->px = round(cos(to_radian(info->angle)) * 5) * -1 + info->px;
-	info->py = round(sin(to_radian(info->angle)) * 5) + info->py;
+	info->px = round(cos(to_radian(info->angle)) * i) * -1.0 + info->px;
+	info->py = round(sin(to_radian(info->angle)) * i) + info->py;
 	minimap(info);
 }
 
 void	move(t_info *info, int keycode)
 {
-	if (keycode == 126 || keycode == 13)
-		move_up(info);
-	if (keycode == 125 || keycode == 1)
-		move_down(info);
-	if (keycode == 123 || keycode == 0)
-		move_left(info);
-	if (keycode == 124 || keycode == 2)
-		move_right(info);
+	double	i;
+	double	j;
+
+	i = 5.0;
+	j = 2.0;
+	if (keycode == 13)
+		move_up(info, i);
+	if (keycode == 1)
+		move_down(info, i);
+	if (keycode == 0)
+		move_left(info, i);
+	if (keycode == 2)
+		move_right(info, i);
+	if (keycode == 123)
+		look_left(info, j);
+	if (keycode == 124)
+		look_right(info, j);
 }

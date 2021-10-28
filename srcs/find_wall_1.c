@@ -6,24 +6,24 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:15:16 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 17:55:17 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 13:24:18 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	find_a(t_info *info, double *a)
+int	find_a(t_info *info, double *a, double angle)
 {
 	int		tmpy;
 	int		tmpx;
 
 	tmpy = 0;
 	tmpx = 0;
-	if (info->angle <= 180 && info->angle > 0)
-		a[1] = floor(info->py / info->minicub) * info->minicub - 1;
+	if (angle <= 180 && angle > 0)
+		a[1] = floor(info->py / info->minicub) * info->minicub - 1.0;
 	else
 		a[1] = floor(info->py / info->minicub) * info->minicub + info->minicub;
-	a[0] = info->px + (info->py - a[1]) / tan(to_radian(info->angle));
+	a[0] = info->px + (info->py - a[1]) / tan(to_radian(angle));
 	tmpy = floor(a[1] / info->minicub);
 	tmpx = floor(a[0] / info->minicub);
 	if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
@@ -34,18 +34,18 @@ int	find_a(t_info *info, double *a)
 	return (1);
 }
 
-void	final_wall_a_1(t_info *info, double *a, int ya, int xa)
+void	final_wall_a_1(t_info *info, double *a, double *i, double angle)
 {
 	int		tmpy;
 	int		tmpx;
 
 	while (1)
 	{
-		a[1] = a[1] + ya;
-		if (info->angle <= 180 && info->angle > 0)
-			a[0] = a[0] + xa;
+		a[1] = a[1] + i[1];
+		if (angle <= 180 && angle > 0)
+			a[0] = a[0] + i[0];
 		else
-			a[0] = a[0] - xa;
+			a[0] = a[0] - i[0];
 		tmpy = floor(a[1] / (double)info->minicub);
 		tmpx = floor(a[0] / (double)info->minicub);
 		if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
@@ -56,15 +56,14 @@ void	final_wall_a_1(t_info *info, double *a, int ya, int xa)
 	}
 }
 
-void	final_wall_a(t_info *info, double *a)
+void	final_wall_a(t_info *info, double *a, double angle)
 {
-	int		ya;
-	int		xa;
+	double		i[2];
 
-	if (info->angle <= 180 && info->angle > 0)
-		ya = info->minicub * -1;
+	if (angle <= 180 && angle > 0)
+		i[1] = info->minicub * -1.0;
 	else
-		ya = info->minicub;
-	xa = info->minicub / tan(to_radian(info->angle));
-	final_wall_a_1(info, a, ya, xa);
+		i[1] = info->minicub;
+	i[0] = info->minicub / tan(to_radian(angle));
+	final_wall_a_1(info, a, i, angle);
 }	

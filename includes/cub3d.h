@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 18:21:21 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/10/28 12:55:50 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ typedef struct s_info
 	int		cb;
 	char	player;
 	double	angle;
-	int		px;
-	int		py;
-	int		minicub;
-	int		cub;
+	double	px;
+	double	py;
+	double	minicub;
+	double	cub;
+	double	fov;
+	double	plane;
 }				t_info;
 
 // utiles
@@ -71,12 +73,16 @@ void	parse_map(t_info *info, t_list *lst);
 void	cub3d(t_info *info);
 void	move(t_info *info, int keycode);
 void	minimap(t_info *info);
-void	find_wall(t_info *info, double *c);
+void	find_wall(t_info *info, double *c, double angle);
 void	move(t_info *info, int keycode);
 
 // find wall
-int		find_a(t_info *info, double *b);
-void	final_wall_a_1(t_info *info, double *b, int yb, int xb);
-void	final_wall_a(t_info *info, double *a);
+int		find_a(t_info *info, double *b, double angle);
+void	final_wall_a_1(t_info *info, double *b, double *i, double angle);
+void	final_wall_a(t_info *info, double *a, double angle);
+
+// move
+void	look_left(t_info *info, double j);
+void	look_right(t_info *info, double j);
 
 #endif
