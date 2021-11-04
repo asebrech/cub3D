@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 14:08:30 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:32:50 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	move(t_info *info, int keycode)
 	double	i;
 	double	j;
 
-	i = 8.0 * (info->cub / 18);
-	j = 6.0 * (info->cub / 18);
+	i = info->cub / 4.0;
+	j = info->cub / 8.0;
 	if (keycode == 13)
 		move_up(info, i, info->angle);
 	if (keycode == 1)

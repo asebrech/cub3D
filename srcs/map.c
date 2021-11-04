@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 15:55:27 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:51:11 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	wall(t_info	*info, double lenght, double x)
 	double	top;
 	double	i;
 
-	plane = round((info->x / 2) / tan(to_radian(info->fov / 2)));
-	slice = ceil(info->cub / lenght * plane);
-	top = round((info->y / 2) - (slice / 2));
+	plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
+	slice = ceil((info->cub / lenght) * plane);
+	top = round((info->y / 2.0) - (slice / 2.0));
 	i = -1;
 	while (++i < slice)
 		if (x >= 0 && top + i >= 0 && x < info->x && top + i < info->y)
@@ -36,8 +36,8 @@ void	player_view(t_info *info)
 	double		lenght;
 	double		i;
 
-	beta = info->fov / 2;
-	angle = info->angle - info->fov / 2;
+	beta = info->fov / 2.0;
+	angle = info->angle - info->fov / 2.0;
 	i = info->x;
 	while (i)
 	{
@@ -49,7 +49,7 @@ void	player_view(t_info *info)
 		lenght = lenght * cos(to_radian(beta));
 		wall(info, lenght, i);
 		angle += info->fov / info->x;
-		if (i > info->x / 2)
+		if (i > info->x / 2.0)
 			beta -= info->fov / info->x;
 		else
 			beta += info->fov / info->x;

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:03:40 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 15:42:48 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:50:26 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	find_b(t_info *info, double *b, double angle)
 	tmpy = 0;
 	tmpx = 0;
 	if (angle > 90 && angle <= 270)
-		b[0] = floor(info->px / info->minicub) * info->minicub - 0.000000001;
+		b[0] = floor(info->px / info->cub) * info->cub - 0.000000001;
 	else
-		b[0] = floor(info->px / info->minicub) * info->minicub + info->minicub;
+		b[0] = floor(info->px / info->cub) * info->cub + info->cub;
 	b[1] = info->py + (info->px - b[0]) * tan(to_radian(angle));
-	tmpy = floor(b[1] / info->minicub);
-	tmpx = floor(b[0] / info->minicub);
+	tmpy = floor(b[1] / info->cub);
+	tmpx = floor(b[0] / info->cub);
 	if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
 		|| tmpx > (int)ft_strlen(info->map[tmpy]))
 		return (1);
@@ -46,8 +46,8 @@ void	final_wall_b_1(t_info *info, double *b, double *i, double angle)
 		else
 			b[1] = b[1] - i[1];
 		b[0] = b[0] + i[0];
-		tmpy = floor(b[1] / info->minicub);
-		tmpx = floor(b[0] / info->minicub);
+		tmpy = floor(b[1] / info->cub);
+		tmpx = floor(b[0] / info->cub);
 		if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
 			|| tmpx > (int)ft_strlen(info->map[tmpy]))
 			break ;
@@ -61,10 +61,10 @@ void	final_wall_b(t_info *info, double *b, double angle)
 	double		i[2];
 
 	if (angle > 90 && angle <= 270)
-		i[0] = info->minicub * -1.0;
+		i[0] = info->cub * -1.0;
 	else
-		i[0] = info->minicub;
-	i[1] = info->minicub * tan(to_radian(angle));
+		i[0] = info->cub;
+	i[1] = info->cub * tan(to_radian(angle));
 	final_wall_b_1(info, b, i, angle);
 }
 

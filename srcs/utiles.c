@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 17:34:29 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:10:50 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	player_start(int i, int j, t_info *info)
 {
-	info->px = j * info->minicub + info->minicub / 2;
-	info->py = i * info->minicub + info->minicub / 2;
+	info->px = j * info->cub + info->cub / 2;
+	info->py = i * info->cub + info->cub / 2;
 	if (info->player == 'N')
 		info->angle = 90;
 	else if (info->player == 'S')

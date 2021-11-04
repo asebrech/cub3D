@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 14:57:30 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 19:03:59 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	player_dir(t_info *info)
 	double		x[2];
 	double		y[2];
 
-	x[0] = info->px;
-	y[0] = info->py;
-	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px;
-	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1 + info->py;
+	x[0] = info->px / 4.0;
+	y[0] = info->py / 4.0;
+	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px / 4.0;
+	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1.0 + info->py / 4.0;
 	dda(x, y, info);
 }
 
@@ -113,13 +113,13 @@ void	player_pos(t_info *info)
 	int		x;
 	int		y;
 
-	x = info->px - info->minicub / 4;
-	y = info->py - info->minicub / 4;
+	x = (info->px / 4.0) - info->minicub / 4.0;
+	y = (info->py / 4.0) - info->minicub / 4.0;
 	i = -1;
-	while (++i < info->minicub / 2)
+	while (++i < info->minicub / 2.0)
 	{
 		j = -1;
-		while (++j < info->minicub / 2)
+		while (++j < info->minicub / 2.0)
 		{
 			if (x + j < info->x && y < info->y)
 				my_mlx_pixel_put(info, x + j, y, 0x0000FF00);
@@ -190,6 +190,6 @@ void	minimap(t_info *info)
 		}
 	}
 	player_pos(info);
-	//player_dir(info);
-	player_dir2(info);
+	player_dir(info);
+	//player_dir2(info);
 }
