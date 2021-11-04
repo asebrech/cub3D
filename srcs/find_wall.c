@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:03:40 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 13:53:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:42:48 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	find_b(t_info *info, double *b, double angle)
 	tmpy = 0;
 	tmpx = 0;
 	if (angle > 90 && angle <= 270)
-		b[0] = floor(info->px / info->minicub) * info->minicub - 1.0;
+		b[0] = floor(info->px / info->minicub) * info->minicub - 0.000000001;
 	else
 		b[0] = floor(info->px / info->minicub) * info->minicub + info->minicub;
 	b[1] = info->py + (info->px - b[0]) * tan(to_radian(angle));
@@ -80,7 +80,9 @@ double	find_wall(t_info *info, double *c, double angle)
 		final_wall_b(info, b, angle);
 	tmp[0] = sqrt(pow((info->px - a[0]), 2) + pow((info->py - a[1]), 2));
 	tmp[1] = sqrt(pow((info->px - b[0]), 2) + pow((info->py - b[1]), 2));
-	if (tmp[0] < tmp[1])
+	//tmp[0] = fabs(info->py - a[1]) / sin(to_radian(info->angle));
+	//tmp[1] = fabs(info->py - b[1]) / sin(to_radian(info->angle));
+	if (tmp[0] <= tmp[1])
 	{
 		c[0] = a[0];
 		c[1] = a[1];

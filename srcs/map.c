@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 14:20:00 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:55:27 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	player_view(t_info *info)
 
 	beta = info->fov / 2;
 	angle = info->angle - info->fov / 2;
-	i = -1.0;
-	while (++i <= info->x)
+	i = info->x;
+	while (i)
 	{
 		if (angle > 360.0)
 			angle -= 360.0;
@@ -49,10 +49,11 @@ void	player_view(t_info *info)
 		lenght = lenght * cos(to_radian(beta));
 		wall(info, lenght, i);
 		angle += info->fov / info->x;
-		if (i < info->x / 2)
+		if (i > info->x / 2)
 			beta -= info->fov / info->x;
 		else
 			beta += info->fov / info->x;
+		i--;
 	}
 }
 

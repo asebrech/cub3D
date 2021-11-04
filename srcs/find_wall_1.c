@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:15:16 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/28 13:24:18 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:42:16 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	find_a(t_info *info, double *a, double angle)
 	tmpy = 0;
 	tmpx = 0;
 	if (angle <= 180 && angle > 0)
-		a[1] = floor(info->py / info->minicub) * info->minicub - 1.0;
+		a[1] = floor(info->py / info->minicub) * info->minicub - 0.00000001;
 	else
 		a[1] = floor(info->py / info->minicub) * info->minicub + info->minicub;
 	a[0] = info->px + (info->py - a[1]) / tan(to_radian(angle));

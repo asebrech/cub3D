@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 14:22:00 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:05:55 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_screen(t_info *info)
 	info->addr = mlx_get_data_addr(info->img, &info->bits_per_pixel,
 			&info->line_length, &info->endian);
 	map(info);
-	minimap(info);
+	//minimap(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
 	mlx_destroy_image(info->mlx, info->img);
 }

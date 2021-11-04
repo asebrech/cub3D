@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 13:57:11 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 14:57:30 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	player_dir2(t_info *info)
 		y[1] = c[1];
 		dda(x, y, info);
 		angle += info->fov / info->x;
-		if (i < info->x / 2)
+		if (i > info->x / 2)
 			beta -= info->fov / info->x;
 		else
 			beta += info->fov / info->x;
