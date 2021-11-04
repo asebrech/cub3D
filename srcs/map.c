@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/28 20:01:38 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/04 14:20:00 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void	wall(t_info	*info, double lenght, double x)
 
 	plane = round((info->x / 2) / tan(to_radian(info->fov / 2)));
 	slice = ceil(info->cub / lenght * plane);
-	printf("%f\n", lenght);
 	top = round((info->y / 2) - (slice / 2));
 	i = -1;
-	while (++i < slice / 2)
-		if (x >= 0 && top + i >= 0 && x <= info->x && top + i <= info->y)
+	while (++i < slice)
+		if (x >= 0 && top + i >= 0 && x < info->x && top + i < info->y)
 			my_mlx_pixel_put(info, x, top + i, 0x00FF0000);
 }
 
-void	player_dir2(t_info *info)
+void	player_view(t_info *info)
 {
 	double		c[2];
 	double		angle;
@@ -59,5 +58,5 @@ void	player_dir2(t_info *info)
 
 void	map(t_info *info)
 {
-	player_dir2(info);
+	player_view(info);
 }

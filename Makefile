@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/10/28 17:50:01 by asebrech         ###   ########.fr        #
+#    Updated: 2021/11/04 14:10:45 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ SRC =	srcs/main.c \
 		srcs/find_wall.c \
 		srcs/find_wall_1.c \
 		srcs/minimap.c \
-		srcs/map.c \
 		srcs/move.c \
+		srcs/map.c \
 		srcs/utiles.c
 SRCB =	
 
