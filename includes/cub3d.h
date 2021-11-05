@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 14:12:50 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:09:22 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ typedef struct s_info
 	int		endian;
 	void	*mlx;
 	void	*win;
+	int		w;
+	int		h;
 	int		x;
 	int		y;
 	char	**map;
 	int		map_len;
 	char	*path;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
 	int		fr;
 	int		fg;
 	int		fb;

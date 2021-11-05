@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 19:03:59 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:17:39 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	player_pos(t_info *info)
 	}
 }
 
-void	print_wall(int i, int j, t_info *info)
+void	print_wall(int i, int j, t_info *info, int bool)
 {
 	int		k;
 	int		l;
@@ -143,8 +143,16 @@ void	print_wall(int i, int j, t_info *info)
 		k = -1;
 		while (++k < info->minicub)
 		{
-			if (x + k < info->x && y < info->y)
-				my_mlx_pixel_put(info, x + k, y, 0x000000FF);
+			if (bool)
+			{
+				if (x + k < info->x && y < info->y)
+					my_mlx_pixel_put(info, x + k, y, 0x4682B4);
+			}
+			else
+			{
+				if (x + k < info->x && y < info->y)
+					my_mlx_pixel_put(info, x + k, y, 0xD0D0D0);
+			}
 		}
 		y++;
 	}
@@ -184,12 +192,12 @@ void	minimap(t_info *info)
 		while (info->map[i][++j])
 		{
 			if (info->map[i][j] == '1')
-				print_wall(i, j, info);
+				print_wall(i, j, info, 0);
 			else if (info->map[i][j] != ' ')
-				print_floor(i, j, info);
+				print_wall(i, j, info, 1);
 		}
 	}
-	player_pos(info);
 	player_dir(info);
+	player_pos(info);
 	//player_dir2(info);
 }

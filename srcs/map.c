@@ -6,13 +6,13 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 18:51:11 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:49:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	wall(t_info	*info, double lenght, double x)
+void	wall(t_info	*info, double lenght, double x, double *c)
 {
 	double	plane;
 	double	slice;
@@ -24,8 +24,18 @@ void	wall(t_info	*info, double lenght, double x)
 	top = round((info->y / 2.0) - (slice / 2.0));
 	i = -1;
 	while (++i < slice)
-		if (x >= 0 && top + i >= 0 && x < info->x && top + i < info->y)
-			my_mlx_pixel_put(info, x, top + i, 0x00FF0000);
+	{
+		if (*c == -1)
+		{
+			if (x >= 0 && top + i >= 0 && x < info->x && top + i < info->y)
+				my_mlx_pixel_put(info, x, top + i, 0x00FF0000);
+		}
+		else
+		{	
+			if (x >= 0 && top + i >= 0 && x < info->x && top + i < info->y)
+				my_mlx_pixel_put(info, x, top + i, 0x0000FF00);
+		}
+	}
 }
 
 void	player_view(t_info *info)
@@ -47,7 +57,7 @@ void	player_view(t_info *info)
 			angle += 360.0;
 		lenght = find_wall(info, c, angle);
 		lenght = lenght * cos(to_radian(beta));
-		wall(info, lenght, i);
+		wall(info, lenght, i, c);
 		angle += info->fov / info->x;
 		if (i > info->x / 2.0)
 			beta -= info->fov / info->x;

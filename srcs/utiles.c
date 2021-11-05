@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 18:10:50 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:46:32 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ void	my_mlx_pixel_put(t_info *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	mlx_pixel_get(t_info *data, int x, int y)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
 }
 
 double	to_radian(double nb)

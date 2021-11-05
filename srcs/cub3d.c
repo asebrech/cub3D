@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 18:52:09 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:32:32 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ int	render_next_frame(t_info *info)
 	return (0);
 }
 
+void	get_xpm(t_info *info)
+{
+	info->no = mlx_xpm_file_to_image(info->mlx, info->no, &info->w, &info->h);
+	info->so = mlx_xpm_file_to_image(info->mlx, info->so, &info->w, &info->h);
+	info->we = mlx_xpm_file_to_image(info->mlx, info->we, &info->w, &info->h);
+	info->ea = mlx_xpm_file_to_image(info->mlx, info->ea, &info->w, &info->h);
+}
+
 void	print_screen(t_info *info)
 {
 	info->img = mlx_new_image(info->mlx, info->x, info->y);
@@ -59,6 +67,7 @@ void	cub3d(t_info *info)
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
 	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
+	get_xpm(info);
 	print_screen(info);
 	//mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);

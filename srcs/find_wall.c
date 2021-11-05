@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:03:40 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 17:50:26 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:50:48 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,12 @@ double	find_wall(t_info *info, double *c, double angle)
 	//tmp[1] = fabs(info->py - b[1]) / sin(to_radian(info->angle));
 	if (tmp[0] <= tmp[1])
 	{
-		c[0] = a[0];
-		c[1] = a[1];
+		c[1] = -1;
 		return (tmp[0]);
 	}
 	else
 	{
-		c[0] = b[0];
-		c[1] = b[1];
+		c[0] = -1;
 		return (tmp[1]);
 	}
 }
