@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 17:57:25 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 19:16:53 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,18 @@ void	wall(t_info	*info, double lenght, double x, double *c, double angle)
     	txt_x = fmod(c[1] / info->cub, 1.0) * 64.0;
 	else
 		txt_x = fmod(c[0] / info->cub, 1.0) * 64.0;
+	//if (slice >= 10000)
+		//slice = 10000;
+	//if (top < 0)
+		//top = 0;
+	//if (top > info->y)
+		//top = info->y;
+	//printf("slice = %f\n", slice);
 	y = -1;
 	while (++y < slice)
 	{
+	//	if (y < top)
+			//my_mlx_pixel_put(&info->img, x, y, )
 		txt_y = (1.0 - ((top + slice) - (top + y)) / slice) * 64.0;
 		if (c[2] == -2)
 		{
@@ -79,6 +88,9 @@ void	player_view(t_info *info)
 		if (angle < 0.0)
 			angle += 360.0;
 		lenght = find_wall(info, c, angle);
+		if (lenght < 1.0)
+			lenght = info->cub / 4;
+		//printf("%f\n", lenght);
 		lenght = lenght * cos(to_radian(beta));
 		wall(info, lenght, i, c, angle);
 		angle += info->fov / info->x;

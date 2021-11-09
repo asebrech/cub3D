@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 16:08:13 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 19:16:27 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	ft_exit(char *str, t_info *info, int index)
 		free(info->map[i]);
 	free(info->map);
 	exit(index);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	ft_print_struct(t_info *info)
