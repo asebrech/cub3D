@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 13:34:38 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 18:27:23 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:01:57 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	struct_fill(t_info *info, char *str, int nb, int index)
 {
-	if (index == 1 && info->no == NULL)
-		info->no = str;
-	else if (index == 2 && info->so == NULL)
-		info->so = str;
-	else if (index == 3 && info->we == NULL)
-		info->we = str;
-	else if (index == 4 && info->ea == NULL)
-		info->ea = str;
+	if (index == 1 && info->cno == NULL)
+		info->cno = str;
+	else if (index == 2 && info->cso == NULL)
+		info->cso = str;
+	else if (index == 3 && info->cwe == NULL)
+		info->cwe = str;
+	else if (index == 4 && info->cea == NULL)
+		info->cea = str;
 	else if (index == 5 && info->fr == -1)
 		info->fr = nb;
 	else if (index == 6 && info->fg == -1)

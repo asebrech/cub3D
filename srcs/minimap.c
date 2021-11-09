@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 16:17:39 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 15:43:10 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dda(double *x, double *y, t_info *info)
 	while (step > 0)
 	{
 		if (x[0] >= 0 && y[0] >= 0 && x[0] < info->x && y[0] < info->y)
-			my_mlx_pixel_put(info, round(x[0]), round(y[0]), 0x00FF0000);
+			my_mlx_pixel_put(&info->img, round(x[0]), round(y[0]), 0x00FF0000);
 		x[0] = x[0] + xinc;
 		y[0] = y[0] + yinc;
 		step--;
@@ -122,7 +122,7 @@ void	player_pos(t_info *info)
 		while (++j < info->minicub / 2.0)
 		{
 			if (x + j < info->x && y < info->y)
-				my_mlx_pixel_put(info, x + j, y, 0x0000FF00);
+				my_mlx_pixel_put(&info->img, x + j, y, 0x0000FF00);
 		}
 		y++;
 	}
@@ -146,12 +146,12 @@ void	print_wall(int i, int j, t_info *info, int bool)
 			if (bool)
 			{
 				if (x + k < info->x && y < info->y)
-					my_mlx_pixel_put(info, x + k, y, 0x4682B4);
+					my_mlx_pixel_put(&info->img, x + k, y, 0x4682B4);
 			}
 			else
 			{
 				if (x + k < info->x && y < info->y)
-					my_mlx_pixel_put(info, x + k, y, 0xD0D0D0);
+					my_mlx_pixel_put(&info->img, x + k, y, 0xD0D0D0);
 			}
 		}
 		y++;
@@ -174,7 +174,7 @@ void	print_floor(int i, int j, t_info *info)
 		while (++k < info->minicub)
 		{
 			if (x + k < info->x && y < info->y)
-				my_mlx_pixel_put(info, x + k, y, 0x00FFFFFF);
+				my_mlx_pixel_put(&info->img, x + k, y, 0x00FFFFFF);
 		}
 		y++;
 	}

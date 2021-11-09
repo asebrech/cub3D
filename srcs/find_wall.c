@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:03:40 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 19:50:48 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 13:34:24 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_b(t_info *info, double *b, double angle)
 
 	tmpy = 0;
 	tmpx = 0;
-	if (angle > 90 && angle <= 270)
+	if (angle > 90.0 && angle <= 270.0)
 		b[0] = floor(info->px / info->cub) * info->cub - 0.000000001;
 	else
 		b[0] = floor(info->px / info->cub) * info->cub + info->cub;
@@ -41,7 +41,7 @@ void	final_wall_b_1(t_info *info, double *b, double *i, double angle)
 
 	while (1)
 	{
-		if (angle > 90 && angle <= 270)
+		if (angle > 90.0 && angle <= 270.0)
 			b[1] = b[1] + i[1];
 		else
 			b[1] = b[1] - i[1];
@@ -60,7 +60,7 @@ void	final_wall_b(t_info *info, double *b, double angle)
 {
 	double		i[2];
 
-	if (angle > 90 && angle <= 270)
+	if (angle > 90.0 && angle <= 270.0)
 		i[0] = info->cub * -1.0;
 	else
 		i[0] = info->cub;
@@ -84,12 +84,16 @@ double	find_wall(t_info *info, double *c, double angle)
 	//tmp[1] = fabs(info->py - b[1]) / sin(to_radian(info->angle));
 	if (tmp[0] <= tmp[1])
 	{
-		c[1] = -1;
+		c[0] = a[0];
+		c[1] = a[1];
+		c[2] = -1;
 		return (tmp[0]);
 	}
 	else
 	{
-		c[0] = -1;
+		c[0] = b[0];
+		c[1] = b[1];
+		c[2] = -2;
 		return (tmp[1]);
 	}
 }

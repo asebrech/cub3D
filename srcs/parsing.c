@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/18 16:45:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:04:02 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	struc_is_full(t_info *info)
 {
-	if (info->no != NULL && info->so != NULL && info->we != NULL
-		&& info->ea != NULL && info->fr != -1 && info->fg != -1
+	if (info->cno != NULL && info->cso != NULL && info->cwe != NULL
+		&& info->cea != NULL && info->fr != -1 && info->fg != -1
 		&& info->fb != -1 && info->cr != -1 && info->cg != -1 && info->cb != -1)
 		return (1);
 	else

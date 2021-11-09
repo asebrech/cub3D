@@ -1,11 +1,11 @@
-NO textures/NO.xpm
-SO textures/SO.xpm
+NO ./textures/NO.xpm
+SO ./textures/SO.xpm
 F 100,0,123
 
-WE textures/WE.xpm
+WE ./textures/WE.xpm
 
 C 225,30,0
-EA textures/EA.xpm
+EA ./textures/EA.xpm
 
  1111111111111111111111111
  1000000000111000000000001

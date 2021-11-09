@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 18:09:22 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 15:59:58 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
 # include <math.h>
 # define PI 3.14159
 
-typedef struct s_info
-{
+typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+}				t_data;
+typedef struct s_info
+{
+	t_data	img;
 	void	*mlx;
 	void	*win;
 	int		w;
@@ -35,10 +38,14 @@ typedef struct s_info
 	char	**map;
 	int		map_len;
 	char	*path;
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	t_data	no;
+	t_data	so;
+	t_data	we;
+	t_data	ea;
+	char	*cno;
+	char	*cso;
+	char	*cwe;
+	char	*cea;
 	int		fr;
 	int		fg;
 	int		fb;
@@ -55,11 +62,12 @@ typedef struct s_info
 }				t_info;
 
 // utiles
-void	my_mlx_pixel_put(t_info *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_exit(char *str, t_info *info, int index);
 void	ft_print_struct(t_info *info);
 double	to_radian(double nb);
 void	player_start(int i, int j, t_info *info);
+int		mlx_pixel_get(t_data *data, int x, int y);
 
 // parsing
 void	ft_parsing(t_info *info);

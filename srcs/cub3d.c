@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 18:32:32 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:56:23 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,31 @@ int	render_next_frame(t_info *info)
 
 void	get_xpm(t_info *info)
 {
-	info->no = mlx_xpm_file_to_image(info->mlx, info->no, &info->w, &info->h);
-	info->so = mlx_xpm_file_to_image(info->mlx, info->so, &info->w, &info->h);
-	info->we = mlx_xpm_file_to_image(info->mlx, info->we, &info->w, &info->h);
-	info->ea = mlx_xpm_file_to_image(info->mlx, info->ea, &info->w, &info->h);
+	info->no.img = mlx_xpm_file_to_image(info->mlx, info->cno, &info->w, &info->h);
+	info->so.img = mlx_xpm_file_to_image(info->mlx, info->cso, &info->w, &info->h);
+	info->we.img = mlx_xpm_file_to_image(info->mlx, info->cwe, &info->w, &info->h);
+	info->ea.img = mlx_xpm_file_to_image(info->mlx, info->cea, &info->w, &info->h);
+	//mlx_put_image_to_window(info->mlx, info->win, info->no.img, 0, 0);
+	info->no.addr = mlx_get_data_addr(info->no.img, &info->no.bits_per_pixel,
+			&info->no.line_length, &info->no.endian);
+	info->so.addr = mlx_get_data_addr(info->so.img, &info->so.bits_per_pixel,
+			&info->so.line_length, &info->so.endian);
+	info->ea.addr = mlx_get_data_addr(info->ea.img, &info->ea.bits_per_pixel,
+			&info->ea.line_length, &info->ea.endian);
+	info->we.addr = mlx_get_data_addr(info->we.img, &info->we.bits_per_pixel,
+			&info->we.line_length, &info->we.endian);
+	//printf("%d\n", mlx_pixel_get(&info->no, 32, 32));
 }
 
 void	print_screen(t_info *info)
 {
-	info->img = mlx_new_image(info->mlx, info->x, info->y);
-	info->addr = mlx_get_data_addr(info->img, &info->bits_per_pixel,
-			&info->line_length, &info->endian);
+	info->img.img = mlx_new_image(info->mlx, info->x, info->y);
+	info->img.addr = mlx_get_data_addr(info->img.img, &info->img.bits_per_pixel,
+			&info->img.line_length, &info->img.endian);
 	map(info);
 	minimap(info);
-	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
-	mlx_destroy_image(info->mlx, info->img);
+	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
+	mlx_destroy_image(info->mlx, info->img.img);
 }
 
 void	cub3d(t_info *info)

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:15:16 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/04 18:37:41 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 13:34:00 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_a(t_info *info, double *a, double angle)
 
 	tmpy = 0;
 	tmpx = 0;
-	if (angle <= 180 && angle > 0)
+	if (angle <= 180.0 && angle > 0.0)
 		a[1] = floor(info->py / info->cub) * info->cub - 0.000000001;
 	else
 		a[1] = floor(info->py / info->cub) * info->cub + info->cub;
@@ -42,7 +42,7 @@ void	final_wall_a_1(t_info *info, double *a, double *i, double angle)
 	while (1)
 	{
 		a[1] = a[1] + i[1];
-		if (angle <= 180 && angle > 0)
+		if (angle <= 180.0 && angle > 0.0)
 			a[0] = a[0] + i[0];
 		else
 			a[0] = a[0] - i[0];
@@ -60,7 +60,7 @@ void	final_wall_a(t_info *info, double *a, double angle)
 {
 	double		i[2];
 
-	if (angle <= 180 && angle > 0)
+	if (angle <= 180.0 && angle > 0.0)
 		i[1] = info->cub * -1.0;
 	else
 		i[1] = info->cub;

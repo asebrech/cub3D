@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/05 16:46:32 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:08:13 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	player_start(int i, int j, t_info *info)
 		info->angle = 180;
 }
 
-void	my_mlx_pixel_put(t_info *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -34,7 +34,7 @@ void	my_mlx_pixel_put(t_info *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	mlx_pixel_get(t_info *data, int x, int y)
+int	mlx_pixel_get(t_data *data, int x, int y)
 {
 	char	*dst;
 
@@ -55,10 +55,10 @@ void	ft_exit(char *str, t_info *info, int index)
 		ft_putstr_fd("Error\n", 2);
 	if (str)
 		ft_putstr_fd(str, 2);
-	free(info->no);
-	free(info->so);
-	free(info->we);
-	free(info->ea);
+	free(info->cno);
+	free(info->cso);
+	free(info->cwe);
+	free(info->cea);
 	i = -1;
 	while (info->map && info->map[++i] != NULL)
 		free(info->map[i]);
@@ -68,10 +68,10 @@ void	ft_exit(char *str, t_info *info, int index)
 
 void	ft_print_struct(t_info *info)
 {
-	printf("NO = %s\n", info->no);
-	printf("SO = %s\n", info->so);
-	printf("WE = %s\n", info->we);
-	printf("EA = %s\n", info->ea);
+	printf("NO = %s\n", info->cno);
+	printf("SO = %s\n", info->cso);
+	printf("WE = %s\n", info->cwe);
+	printf("EA = %s\n", info->cea);
 	printf("Fr = %d\n", info->fr);
 	printf("Fg = %d\n", info->fg);
 	printf("Fb = %d\n", info->fb);
