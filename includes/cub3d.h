@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:28:31 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 15:52:27 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_info
 	int		h;
 	int		x;
 	int		y;
+	t_list	*lst;
 	char	**map;
 	int		map_len;
 	char	*path;

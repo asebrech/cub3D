@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/10/27 17:36:55 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:10:54 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	lst_to_char(t_info *info, t_list *lst)
 	while (tmp->next && ++i)
 		tmp = tmp->next;
 	info->map = malloc(sizeof(char *) * (i + 2));
+	tmp = lst;
 	i = 0;
-	while (lst->next)
+	while (tmp->next)
 	{
-		info->map[i] = lst->content;
-		lst = lst->next;
+		info->map[i] = tmp->content;
+		tmp = tmp->next;
 		i++;
 	}
-	info->map[i] = lst->content;
+	info->map[i] = tmp->content;
 	info->map[i + 1] = NULL;
 	info->map_len = i;
 }

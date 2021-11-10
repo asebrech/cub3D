@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 16:04:02 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 15:52:52 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	ft_parsing(t_info *info)
 	int		fd;
 	int		i;
 	int		j;
-	t_list	*lst;
 
 	i = 1;
 	j = 0;
@@ -97,10 +96,10 @@ void	ft_parsing(t_info *info)
 	{
 		i = get_next_line(fd, &line);
 		if (!j)
-			dumb_norm(info, line, &lst, &j);
+			dumb_norm(info, line, &info->lst, &j);
 		else
-			get_map(&lst, line, info);
+			get_map(&info->lst, line, info);
 	}
 	close(fd);
-	parse_map(info, lst);
+	parse_map(info, info->lst);
 }

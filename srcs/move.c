@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:46:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:23:26 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	move_down(t_info *info, double cub, double mini, double angle)
 {
 	info->px = round(cos(to_radian(angle)) * cub) * -1.0 + info->px;
 	info->py = round(sin(to_radian(angle)) * cub) + info->py;
-	info->px = round(cos(to_radian(angle)) * mini) * -1.0 + info->px;
-	info->py = round(sin(to_radian(angle)) * mini) + info->py;
+	info->minipx = round(cos(to_radian(angle)) * mini) * -1.0 + info->minipx;
+	info->minipy = round(sin(to_radian(angle)) * mini) + info->minipy;
 	print_screen(info);
 }
 

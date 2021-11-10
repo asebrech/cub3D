@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:39:10 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:15:50 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:21:08 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ void	print_h(t_info *info, double x, double y, double angle)
 	}
 }
 
-void	extremely_dumb_norm(t_info *info)
+double	extremely_dumb_norm(t_info *info)
 {
 	if (info->wall_type == 'v')
 		info->txt_x = fmod(info->wall_y / info->cub, 1.0) * info->cub;
 	else
 		info->txt_x = fmod(info->wall_x / info->cub, 1.0) * info->cub;
+	return (ceil((info->cub / info->wall_len) * info->plane));
 }
 
 void	wall(t_info	*info, double x, double angle)
@@ -58,16 +59,16 @@ void	wall(t_info	*info, double x, double angle)
 	double	top;
 	double	y;
 
-	slice = ceil((info->cub / info->wall_len) * info->plane);
+	slice = extremely_dumb_norm(info);
 	top = round((info->y / 2.0) - (slice / 2.0));
-	extremely_dumb_norm(info);
 	y = -1;
 	while (++y < info->y)
 	{
-		if (y < top)
+		if (y < top && x >= 0 && y >= 0 && x < info->x && y < info->y)
 			my_mlx_pixel_put(&info->img, x, y,
 				create_trgb(0, info->cr, info->cg, info->cb));
-		else if (y >= slice + top)
+		else if (y >= slice + top && x >= 0 && y >= 0
+			&& x < info->x && y < info->y)
 			my_mlx_pixel_put(&info->img, x, y,
 				create_trgb(0, info->fr, info->fg, info->fb));
 		else
