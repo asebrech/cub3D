@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/09 18:23:02 by asebrech         ###   ########.fr        #
+#    Updated: 2021/11/10 09:25:50 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC =	srcs/main.c \
 		srcs/minimap.c \
 		srcs/move.c \
 		srcs/map.c \
+		srcs/utiles_1.c \
 		srcs/utiles.c
 SRCB =	
 

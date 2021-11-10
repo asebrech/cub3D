@@ -6,104 +6,23 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 15:43:10 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 10:20:30 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	dda(double *x, double *y, t_info *info)
-{
-	double	dx;
-	double	dy;
-	int		step;
-	double	xinc;
-	double	yinc;
-
-	dx = x[1] - x[0];
-	dy = y[1] - y[0];
-	if (fabs(dx) > fabs(dy))
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	xinc = dx / step;
-	yinc = dy / step;
-	while (step > 0)
-	{
-		if (x[0] >= 0 && y[0] >= 0 && x[0] < info->x && y[0] < info->y)
-			my_mlx_pixel_put(&info->img, round(x[0]), round(y[0]), 0x00FF0000);
-		x[0] = x[0] + xinc;
-		y[0] = y[0] + yinc;
-		step--;
-	}	
-}
 
 void	player_dir(t_info *info)
 {
 	double		x[2];
 	double		y[2];
 
-	x[0] = info->px / 4.0;
-	y[0] = info->py / 4.0;
-	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px / 4.0;
-	y[1] = round(sin(to_radian(info->angle)) * info->minicub) * -1.0 + info->py / 4.0;
+	x[0] = info->px / 6.0;
+	y[0] = info->py / 6.0;
+	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px / 6.0;
+	y[1] = round(sin(to_radian(info->angle)) * info->minicub)
+		* -1.0 + info->py / 6.0;
 	dda(x, y, info);
-}
-
-void	player_dir2(t_info *info)
-{/*
-	double		x[2];
-	double		y[2];
-	double		c[2];
-	double		angle;
-	double		i;
-
-	angle = info->angle - info->fov / 2;
-	i = -1.0;
-	while (++i < info->x)
-	{
-		if (angle > 360.0)
-			angle -= 360.0;
-		if (angle < 0.0)
-			angle += 360.0;
-		find_wall(info, c, angle);
-		x[0] = info->px;
-		y[0] = info->py;
-		x[1] = c[0];
-		y[1] = c[1];
-		dda(x, y, info);
-		angle += info->fov / info->x;
-	}*/
-	double		x[2];
-	double		y[2];
-	double		c[2];
-	double		angle;
-	double		beta;
-	double		lenght;
-	double		i;
-
-	beta = info->fov / 2;
-	angle = info->angle - info->fov / 2;
-	i = -1.0;
-	while (++i <= info->x)
-	{
-		if (angle > 360.0)
-			angle -= 360.0;
-		if (angle < 0.0)
-			angle += 360.0;
-		lenght = find_wall(info, c, angle);
-		lenght = lenght * cos(to_radian(beta));
-		x[0] = info->px;
-		y[0] = info->py;
-		x[1] = c[0];
-		y[1] = c[1];
-		dda(x, y, info);
-		angle += info->fov / info->x;
-		if (i > info->x / 2)
-			beta -= info->fov / info->x;
-		else
-			beta += info->fov / info->x;
-	}
 }
 
 void	player_pos(t_info *info)
@@ -113,8 +32,8 @@ void	player_pos(t_info *info)
 	int		x;
 	int		y;
 
-	x = (info->px / 4.0) - info->minicub / 4.0;
-	y = (info->py / 4.0) - info->minicub / 4.0;
+	x = (info->px / 6.0) - info->minicub / 6.0;
+	y = (info->py / 6.0) - info->minicub / 6.0;
 	i = -1;
 	while (++i < info->minicub / 2.0)
 	{
@@ -126,6 +45,12 @@ void	player_pos(t_info *info)
 		}
 		y++;
 	}
+}
+
+void	very_dumb_norm(t_info *info, int k, int x, int y)
+{
+	if (x + k < info->x && y < info->y)
+		my_mlx_pixel_put(&info->img, x + k, y, 0xD0D0D0);
 }
 
 void	print_wall(int i, int j, t_info *info, int bool)
@@ -149,32 +74,7 @@ void	print_wall(int i, int j, t_info *info, int bool)
 					my_mlx_pixel_put(&info->img, x + k, y, 0x4682B4);
 			}
 			else
-			{
-				if (x + k < info->x && y < info->y)
-					my_mlx_pixel_put(&info->img, x + k, y, 0xD0D0D0);
-			}
-		}
-		y++;
-	}
-}
-
-void	print_floor(int i, int j, t_info *info)
-{
-	int		k;
-	int		l;
-	int		x;
-	int		y;
-
-	x = j * info->minicub;
-	y = i * info->minicub;
-	l = 0;
-	while (++l < info->minicub)
-	{
-		k = 0;
-		while (++k < info->minicub)
-		{
-			if (x + k < info->x && y < info->y)
-				my_mlx_pixel_put(&info->img, x + k, y, 0x00FFFFFF);
+				very_dumb_norm(info, k, x, y);
 		}
 		y++;
 	}
@@ -199,5 +99,4 @@ void	minimap(t_info *info)
 	}
 	player_dir(info);
 	player_pos(info);
-	//player_dir2(info);
 }

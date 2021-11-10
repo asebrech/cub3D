@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 15:59:58 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 10:36:12 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 # include <math.h>
 # define PI 3.14159
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_data;
+
 typedef struct s_info
 {
 	t_data	img;
@@ -56,18 +57,26 @@ typedef struct s_info
 	double	angle;
 	double	px;
 	double	py;
+	double	wall_x;
+	double	wall_y;
+	char	wall_type;
+	double	wall_len;
+	int		txt_x;
+	int		txt_y;
 	double	minicub;
 	double	cub;
 	double	fov;
+	double	plane;
 }				t_info;
 
 // utiles
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_exit(char *str, t_info *info, int index);
-void	ft_print_struct(t_info *info);
 double	to_radian(double nb);
 void	player_start(int i, int j, t_info *info);
 int		mlx_pixel_get(t_data *data, int x, int y);
+int		create_trgb(int t, int r, int g, int b);
+void	dda(double *x, double *y, t_info *info);
 
 // parsing
 void	ft_parsing(t_info *info);
@@ -82,18 +91,14 @@ void	parse_map(t_info *info, t_list *lst);
 void	cub3d(t_info *info);
 void	move(t_info *info, int keycode);
 void	minimap(t_info *info);
-double	find_wall(t_info *info, double *c, double angle);
+void	find_wall(t_info *info, double angle);
 void	move(t_info *info, int keycode);
 void	print_screen(t_info *info);
 void	map(t_info *info);
 
 // find wall
-int		find_a(t_info *info, double *b, double angle);
-void	final_wall_a_1(t_info *info, double *b, double *i, double angle);
-void	final_wall_a(t_info *info, double *a, double angle);
-
-// move
-void	look_left(t_info *info, double j);
-void	look_right(t_info *info, double j);
+int		find_v(t_info *info, double *v, double angle);
+void	final_wall_v_1(t_info *info, double *v, double *inc, double angle);
+void	final_wall_v(t_info *info, double *v, double angle);
 
 #endif

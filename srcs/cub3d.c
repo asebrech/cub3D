@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 17:56:23 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 09:18:48 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,16 @@ int	ft_close(int keycode, t_info *info)
 	return (0);
 }
 
-int	render_next_frame(t_info *info)
-{
-	mlx_clear_window(info->mlx, info->win);
-	minimap(info);
-	return (0);
-}
-
 void	get_xpm(t_info *info)
 {
-	info->no.img = mlx_xpm_file_to_image(info->mlx, info->cno, &info->w, &info->h);
-	info->so.img = mlx_xpm_file_to_image(info->mlx, info->cso, &info->w, &info->h);
-	info->we.img = mlx_xpm_file_to_image(info->mlx, info->cwe, &info->w, &info->h);
-	info->ea.img = mlx_xpm_file_to_image(info->mlx, info->cea, &info->w, &info->h);
-	//mlx_put_image_to_window(info->mlx, info->win, info->no.img, 0, 0);
+	info->no.img = mlx_xpm_file_to_image(info->mlx,
+			info->cno, &info->w, &info->h);
+	info->so.img = mlx_xpm_file_to_image(info->mlx,
+			info->cso, &info->w, &info->h);
+	info->we.img = mlx_xpm_file_to_image(info->mlx,
+			info->cwe, &info->w, &info->h);
+	info->ea.img = mlx_xpm_file_to_image(info->mlx,
+			info->cea, &info->w, &info->h);
 	info->no.addr = mlx_get_data_addr(info->no.img, &info->no.bits_per_pixel,
 			&info->no.line_length, &info->no.endian);
 	info->so.addr = mlx_get_data_addr(info->so.img, &info->so.bits_per_pixel,
@@ -57,7 +53,6 @@ void	get_xpm(t_info *info)
 			&info->ea.line_length, &info->ea.endian);
 	info->we.addr = mlx_get_data_addr(info->we.img, &info->we.bits_per_pixel,
 			&info->we.line_length, &info->we.endian);
-	//printf("%d\n", mlx_pixel_get(&info->no, 32, 32));
 }
 
 void	print_screen(t_info *info)
@@ -79,6 +74,5 @@ void	cub3d(t_info *info)
 	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
 	get_xpm(info);
 	print_screen(info);
-	//mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);
 }

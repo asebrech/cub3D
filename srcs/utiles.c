@@ -6,25 +6,11 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 19:16:27 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 09:29:40 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	player_start(int i, int j, t_info *info)
-{
-	info->px = j * info->cub + info->cub / 2;
-	info->py = i * info->cub + info->cub / 2;
-	if (info->player == 'N')
-		info->angle = 90;
-	else if (info->player == 'S')
-		info->angle = 270;
-	else if (info->player == 'E')
-		info->angle = 360;
-	else if (info->player == 'W')
-		info->angle = 180;
-}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -69,18 +55,4 @@ void	ft_exit(char *str, t_info *info, int index)
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-void	ft_print_struct(t_info *info)
-{
-	printf("NO = %s\n", info->cno);
-	printf("SO = %s\n", info->cso);
-	printf("WE = %s\n", info->cwe);
-	printf("EA = %s\n", info->cea);
-	printf("Fr = %d\n", info->fr);
-	printf("Fg = %d\n", info->fg);
-	printf("Fb = %d\n", info->fb);
-	printf("Cr = %d\n", info->cr);
-	printf("Cg = %d\n", info->cg);
-	printf("Cb = %d\n", info->cb);
 }

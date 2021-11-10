@@ -6,26 +6,26 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:15:16 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/09 19:17:12 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 10:08:11 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	find_a(t_info *info, double *a, double angle)
+int	find_v(t_info *info, double *v, double angle)
 {
 	int		tmpy;
 	int		tmpx;
 
 	tmpy = 0;
 	tmpx = 0;
-	if (angle <= 180.0 && angle > 0.0)
-		a[1] = floor(info->py / info->cub) * info->cub - 0.000000001;
+	if (angle > 90.0 && angle <= 270.0)
+		v[0] = floor(info->px / info->cub) * info->cub - 0.000000001;
 	else
-		a[1] = floor(info->py / info->cub) * info->cub + info->cub;
-	a[0] = info->px + (info->py - a[1]) / tan(to_radian(angle));
-	tmpy = floor(a[1] / info->cub);
-	tmpx = floor(a[0] / info->cub);
+		v[0] = floor(info->px / info->cub) * info->cub + info->cub;
+	v[1] = info->py + (info->px - v[0]) * tan(to_radian(angle));
+	tmpy = floor(v[1] / info->cub);
+	tmpx = floor(v[0] / info->cub);
 	if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
 		|| tmpx > (int)ft_strlen(info->map[tmpy]))
 		return (1);
@@ -34,20 +34,20 @@ int	find_a(t_info *info, double *a, double angle)
 	return (1);
 }
 
-void	final_wall_a_1(t_info *info, double *a, double *i, double angle)
+void	final_wall_v_1(t_info *info, double *v, double *inc, double angle)
 {
 	int		tmpy;
 	int		tmpx;
 
 	while (1)
 	{
-		a[1] = a[1] + i[1];
-		if (angle <= 180.0 && angle > 0.0)
-			a[0] = a[0] + i[0];
+		if (angle > 90.0 && angle <= 270.0)
+			v[1] = v[1] + inc[1];
 		else
-			a[0] = a[0] - i[0];
-		tmpy = floor(a[1] / (double)info->cub);
-		tmpx = floor(a[0] / (double)info->cub);
+			v[1] = v[1] - inc[1];
+		v[0] = v[0] + inc[0];
+		tmpy = floor(v[1] / info->cub);
+		tmpx = floor(v[0] / info->cub);
 		if (tmpy < 0 || tmpx < 0 || tmpy > info->map_len
 			|| tmpx > (int)ft_strlen(info->map[tmpy]))
 			break ;
@@ -56,14 +56,14 @@ void	final_wall_a_1(t_info *info, double *a, double *i, double angle)
 	}
 }
 
-void	final_wall_a(t_info *info, double *a, double angle)
+void	final_wall_v(t_info *info, double *v, double angle)
 {
-	double		i[2];
+	double		inc[2];
 
-	if (angle <= 180.0 && angle > 0.0)
-		i[1] = info->cub * -1.0;
+	if (angle > 90.0 && angle <= 270.0)
+		inc[0] = info->cub * -1.0;
 	else
-		i[1] = info->cub;
-	i[0] = info->cub / tan(to_radian(angle));
-	final_wall_a_1(info, a, i, angle);
-}	
+		inc[0] = info->cub;
+	inc[1] = info->cub * tan(to_radian(angle));
+	final_wall_v_1(info, v, inc, angle);
+}
