@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:13:17 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:46:19 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,43 @@ void	look_right(t_info *info, double v)
 	print_screen(info);
 }
 
-void	move_up(t_info *info, double m, double angle)
+void	move_up(t_info *info, double cub, double mini, double angle)
 {
-	info->px = round(cos(to_radian(angle)) * m) + info->px;
-	info->py = round(sin(to_radian(angle)) * m) * -1.0 + info->py;
+	info->px = round(cos(to_radian(angle)) * cub) + info->px;
+	info->py = round(sin(to_radian(angle)) * cub) * -1.0 + info->py;
+	info->minipx = round(cos(to_radian(angle)) * mini) + info->minipx;
+	info->minipy = round(sin(to_radian(angle)) * mini) * -1.0 + info->minipy;
 	print_screen(info);
 }
 
-void	move_down(t_info *info, double m, double angle)
+void	move_down(t_info *info, double cub, double mini, double angle)
 {
-	info->px = round(cos(to_radian(angle)) * m) * -1.0 + info->px;
-	info->py = round(sin(to_radian(angle)) * m) + info->py;
+	info->px = round(cos(to_radian(angle)) * cub) * -1.0 + info->px;
+	info->py = round(sin(to_radian(angle)) * cub) + info->py;
+	info->px = round(cos(to_radian(angle)) * mini) * -1.0 + info->px;
+	info->py = round(sin(to_radian(angle)) * mini) + info->py;
 	print_screen(info);
 }
 
 void	move(t_info *info, int keycode)
 {
-	double	m;
 	double	v;
+	double	m;
+	double	cub;
+	double	mini;
 
-	m = info->cub / 4.0;
+	m = 4.0;
 	v = info->fov / 12.0;
+	cub = info->cub / m;
+	mini = info->minicub / m;
 	if (keycode == 13)
-		move_up(info, m, info->angle);
+		move_up(info, cub, mini, info->angle);
 	if (keycode == 1)
-		move_down(info, m, info->angle);
+		move_down(info, cub, mini, info->angle);
 	if (keycode == 0)
-		move_up(info, m, info->angle + 90.0);
+		move_up(info, cub, mini, info->angle + 90.0);
 	if (keycode == 2)
-		move_up(info, m, info->angle - 90.0);
+		move_up(info, cub, mini, info->angle - 90.0);
 	if (keycode == 123)
 		look_left(info, v);
 	if (keycode == 124)

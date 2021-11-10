@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:26:58 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:34:31 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	player_dir(t_info *info)
 	double		x[2];
 	double		y[2];
 
-	x[0] = info->px / 6.0;
-	y[0] = info->py / 6.0;
-	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->px / 6.0;
+	x[0] = info->minipx;
+	y[0] = info->minipy;
+	x[1] = round(cos(to_radian(info->angle)) * info->minicub) + info->minipx;
 	y[1] = round(sin(to_radian(info->angle)) * info->minicub)
-		* -1.0 + info->py / 6.0;
+		* -1.0 + info->minipy;
 	dda(x, y, info);
 }
 
@@ -32,8 +32,8 @@ void	player_pos(t_info *info)
 	int		x;
 	int		y;
 
-	x = (info->px / 6.0) - info->minicub / 6.0;
-	y = (info->py / 6.0) - info->minicub / 6.0;
+	x = info->minipx - info->minicub / 4;
+	y = info->minipy - info->minicub / 4;
 	i = -1;
 	while (++i < info->minicub / 2.0)
 	{

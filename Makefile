@@ -6,12 +6,12 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/10 09:25:50 by asebrech         ###   ########.fr        #
+#    Updated: 2021/11/10 11:50:00 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS =
+CFLAGS = -Wall -Werror -Wextra
 LFLAGS = -lmlx -framework OpenGL -framework AppKit
 HEADER = includes
 NAME = cub3D

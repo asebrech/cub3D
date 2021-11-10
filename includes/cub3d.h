@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 10:36:12 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:28:31 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_info
 	double	angle;
 	double	px;
 	double	py;
+	double	minipx;
+	double	minipy;
 	double	wall_x;
 	double	wall_y;
 	char	wall_type;
