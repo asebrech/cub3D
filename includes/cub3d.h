@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 15:52:27 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:51:41 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ typedef struct s_info
 	double	cub;
 	double	fov;
 	double	plane;
+	int		up;
+	int		down;
+	int		right;
+	int		left;
+	int		lookr;
+	int		lookl;
 }				t_info;
 
 // utiles
@@ -80,6 +86,8 @@ void	player_start(int i, int j, t_info *info);
 int		mlx_pixel_get(t_data *data, int x, int y);
 int		create_trgb(int t, int r, int g, int b);
 void	dda(double *x, double *y, t_info *info);
+int		ft_close(t_info *info);
+int		render_next_frame(void *info);
 
 // parsing
 void	ft_parsing(t_info *info);
@@ -92,10 +100,9 @@ void	parse_map(t_info *info, t_list *lst);
 
 // cub3d
 void	cub3d(t_info *info);
-void	move(t_info *info, int keycode);
+void	move(t_info *info);
 void	minimap(t_info *info);
 void	find_wall(t_info *info, double angle);
-void	move(t_info *info, int keycode);
 void	print_screen(t_info *info);
 void	map(t_info *info);
 

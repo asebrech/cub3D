@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:29:50 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:35:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ void	dda(double *x, double *y, t_info *info)
 		y[0] = y[0] + yinc;
 		step--;
 	}	
+}
+
+int	ft_close(t_info *info)
+{
+	ft_exit(NULL, info, 0);
+	return (0);
+}
+
+int	render_next_frame(void *info)
+{
+	move(info);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 11:48:30 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:54:16 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	fill_struct(t_info *info)
 {
+	info->up = 0;
+	info->down = 0;
+	info->right = 0;
+	info->left = 0;
+	info->lookr = 0;
+	info->lookl = 0;
 	info->map = NULL;
 	info->cno = NULL;
 	info->cso = NULL;
@@ -28,7 +34,7 @@ void	fill_struct(t_info *info)
 	info->x = 1800.0;
 	info->y = 900.0;
 	info->cub = 64.0;
-	info->minicub = 12.0;
+	info->minicub = info->cub / 6.0;
 	info->fov = 60.0;
 	info->plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
 }

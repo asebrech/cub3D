@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 13:34:38 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 16:07:27 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 11:37:18 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	fill_path(t_info *info, char *line, int index)
 	j = 0;
 	while (line[i + j] && !ft_isspace(line[i + j]))
 		j++;
-	check_file(info, ft_strdup(ft_substr(line, i, j)), index);
+	check_file(info, ft_substr(line, i, j), index);
 	while (line[i + j] && ft_isspace(line[i + j]))
 		j++;
 	if (line[i + j] != '\0')
