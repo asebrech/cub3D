@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/11 15:55:16 by asebrech         ###   ########.fr        #
+#    Updated: 2021/11/11 19:54:52 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,19 @@ SRC =	srcs/main.c \
 		srcs/map.c \
 		srcs/utiles_1.c \
 		srcs/utiles.c
-SRCB =	
+SRCB =	bonus/main_bonus.c \
+		bonus/parsing_bonus.c \
+		bonus/parsing_resource_bonus.c \
+		bonus/parsing_map_bonus.c \
+		bonus/cub3d_bonus.c \
+		bonus/find_wall_bonus.c \
+		bonus/find_wall_1_bonus.c \
+		bonus/minimap_bonus.c \
+		bonus/move_bonus.c \
+		bonus/map_bonus.c \
+		bonus/utiles_1_bonus.c \
+		bonus/sprite_bonus.c \
+		bonus/utiles_bonus.c
 
 ifdef WHITH_BONUS
 	OBJ = $(SRCB:.c=.o)

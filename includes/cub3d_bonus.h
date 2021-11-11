@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 19:33:39 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:54:12 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <stdio.h>
@@ -110,5 +110,8 @@ void	map(t_info *info);
 int		find_v(t_info *info, double *v, double angle);
 void	final_wall_v_1(t_info *info, double *v, double *inc, double angle);
 void	final_wall_v(t_info *info, double *v, double angle);
+
+// sprite
+void	sprite(t_info *info);
 
 #endif

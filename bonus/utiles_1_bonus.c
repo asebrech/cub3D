@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utiles_1.c                                         :+:      :+:    :+:   */
+/*   utiles_1_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 19:32:49 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:35:12 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	player_start(int i, int j, t_info *info)
 {
