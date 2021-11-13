@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 13:54:16 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/13 16:12:27 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fill_struct(t_info *info)
 	info->cg = -1;
 	info->cb = -1;
 	info->x = 1800.0;
-	info->y = 900.0;
+	info->y = 1000.0;
 	info->cub = 64.0;
 	info->minicub = info->cub / 6.0;
 	info->fov = 60.0;

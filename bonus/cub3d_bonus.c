@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 20:05:51 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:39:39 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	key_hook(int keycode, t_info *info)
 {
+	printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(info->mlx, info->win);
 		ft_exit(NULL, info, 0);
 	}
-	else
-	{
-		if (keycode == 13)
-			info->up = 1;
-		else if (keycode == 1)
-			info->down = 1;
-		else if (keycode == 2)
-			info->left = 1;
-		else if (keycode == 0)
-			info->right = 1;
-		else if (keycode == 123)
-			info->lookl = 1;
-		else if (keycode == 124)
-			info->lookr = 1;
-	}
+	if (keycode == 13)
+		info->up = 1;
+	if (keycode == 1)
+		info->down = 1;
+	if (keycode == 2)
+		info->left = 1;
+	if (keycode == 0)
+		info->right = 1;
+	if (keycode == 123)
+		info->lookl = 1;
+	if (keycode == 124)
+		info->lookr = 1;
+	if (keycode == 257)
+		info->run = 1;
 	return (0);
 }
 
@@ -41,16 +41,18 @@ int	key_relese(int keycode, t_info *info)
 {
 	if (keycode == 13)
 		info->up = 0;
-	else if (keycode == 1)
+	if (keycode == 1)
 		info->down = 0;
-	else if (keycode == 2)
+	if (keycode == 2)
 		info->left = 0;
-	else if (keycode == 0)
+	if (keycode == 0)
 		info->right = 0;
-	else if (keycode == 123)
+	if (keycode == 123)
 		info->lookl = 0;
-	else if (keycode == 124)
+	if (keycode == 124)
 		info->lookr = 0;
+	if (keycode == 257)
+		info->run = 0;
 	return (0);
 }
 
@@ -79,12 +81,14 @@ void	print_screen(t_info *info)
 	info->img.img = mlx_new_image(info->mlx, info->x, info->y);
 	info->img.addr = mlx_get_data_addr(info->img.img, &info->img.bits_per_pixel,
 			&info->img.line_length, &info->img.endian);
-	//map(info);
-	//minimap(info);
-	sprite(info);
-	//mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
+	map(info);
+	minimap(info);
+	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 	mlx_destroy_image(info->mlx, info->img.img);
+	sprite(info);
 }
+
+//void	mouse()
 
 void	cub3d(t_info *info)
 {
@@ -92,9 +96,13 @@ void	cub3d(t_info *info)
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
 	mlx_hook(info->win, 3, 1L << 1, key_relese, info);
+	//mlx_hook(info->win, 6, 1L << 6, mouse, info);
 	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
 	get_xpm(info);
+	mlx_mouse_hide();
+	mlx_do_key_autorepeatoff(info->mlx);
+	mlx_mouse_move(info->win, info->x / 2.0, info->y / 2.0);
 	print_screen(info);
-	//mlx_loop_hook(info->mlx, render_next_frame, info);
+	mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);
 }

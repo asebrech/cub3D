@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 19:38:43 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:37:47 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	look_left(t_info *info, double v)
 {
+	if (abs(info->mouse) && info->mouse != 0)
+		v = (double)abs(info->mouse) / 10;
 	info->angle += v;
 	if (info->angle > 360.0)
 		info->angle -= 360.0;
@@ -22,27 +24,35 @@ void	look_left(t_info *info, double v)
 
 void	look_right(t_info *info, double v)
 {
+	if (info->mouse && info->mouse != 0)
+		v = (double)info->mouse / 10;
 	info->angle -= v;
 	if (info->angle < 0.0)
 		info->angle += 360.0;
 	print_screen(info);
 }
 
-void	move_up(t_info *info, double cub, double mini, double angle)
+void	move_up(t_info *info, double cub, double angle)
 {
-	info->px = round(cos(to_radian(angle)) * cub) + info->px;
-	info->py = round(sin(to_radian(angle)) * cub) * -1.0 + info->py;
-	info->minipx = round(cos(to_radian(angle)) * mini) + info->px / 6.0;
-	info->minipy = round(sin(to_radian(angle)) * mini) * -1.0 + info->py / 6.0;
-	print_screen(info);
-}
+	double	y;
+	double	x;
+	int		tmpy;
+	int		tmpx;
 
-void	move_down(t_info *info, double cub, double mini, double angle)
-{
-	info->px = round(cos(to_radian(angle)) * cub) * -1.0 + info->px;
-	info->py = round(sin(to_radian(angle)) * cub) + info->py;
-	info->minipx = round(cos(to_radian(angle)) * mini) * -1.0 + info->px / 6.0;
-	info->minipy = round(sin(to_radian(angle)) * mini) + info->py / 6.0;
+	x = round(cos(to_radian(angle)) * cub) + info->px;
+	y = round(sin(to_radian(angle)) * cub) * -1.0 + info->py;
+	tmpx = floor(x / info->cub);
+	tmpy = floor(y / info->cub);
+	if (info->map[(int)floor(info->py / info->cub)][tmpx] != '1')
+	{
+		info->px = x;
+		info->minipx = x / 6.0;
+	}
+	if (info->map[tmpy][(int)floor(info->px / info->cub)] != '1')
+	{	
+		info->py = y;
+		info->minipy = y / 6.0;
+	}
 	print_screen(info);
 }
 
@@ -53,20 +63,23 @@ void	move(t_info *info)
 	double	cub;
 	double	mini;
 
-	m = 5.0;
+	if (info->run)
+		m = 3.0;
+	else
+		m = 5.0;
 	v = info->fov / 12.0;
 	cub = info->cub / m;
 	mini = info->minicub / m;
-	if (info->lookl)
+	if (info->lookl || info->mouse < 0)
 		look_left(info, v);
-	if (info->lookr)
+	if (info->lookr || info->mouse > 0)
 		look_right(info, v);
 	if (info->right)
-		move_up(info, cub / 2.0, mini / 2.0, info->angle + 90.0);
+		move_up(info, cub / 2.0, info->angle + 90.0);
 	if (info->left)
-		move_up(info, cub / 2.0, mini / 2.0, info->angle - 90.0);
+		move_up(info, cub / 2.0, info->angle - 90.0);
 	if (info->up)
-		move_up(info, cub, mini, info->angle);
+		move_up(info, cub, info->angle);
 	if (info->down)
-		move_down(info, cub, mini, info->angle);
+		move_up(info, cub, info->angle + 180);
 }

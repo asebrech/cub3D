@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
+#    By: alois <alois@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/11 19:54:52 by asebrech         ###   ########.fr        #
+#    Updated: 2021/11/13 16:17:07 by alois            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-LFLAGS = -lmlx -framework OpenGL -framework AppKit
+LFLAGS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 HEADER = includes
 NAME = cub3D
 RM = rm -rf
@@ -49,7 +49,7 @@ else
 endif
 
 .c.o :
-	$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -I$(HEADER) -Iminilibx -c $< -o $(<:.c=.o)
 
 all : $(NAME)
 
@@ -57,6 +57,7 @@ bonus :
 	@make WHITH_BONUS=1 all
 
 $(NAME) : $(OBJ)
+	@make -C minilibx 
 	@make -C libft bonus
 	$(CC) $(CFLAGS) $(LFLAGS) -I$(HEADER) -Llibft -lft $(OBJ) -o $(NAME)
 
@@ -65,7 +66,8 @@ clean :
 	$(RM) */*.o
 
 fclean : clean
-	$(RM) libft/libft.a
+	@make -C minilibx clean 
+	@make -C libft fclean 
 	$(RM) $(NAME)
 
 
