@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 18:23:03 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 23:34:09 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,48 @@ typedef struct s_info
 	void	*arr3;
 	void	*arr4;
 	void	*arr5;
+	void	*ma1;
+	void	*ma2;
+	void	*ma3;
+	void	*ma4;
+	void	*mac1;
+	void	*mac2;
+	void	*mac3;
+	void	*mac4;
+	void	*mac5;
+	void	*mac6;
+	void	*mac7;
+	void	*mar1;
+	void	*mar2;
+	void	*mar3;
+	void	*mar4;
+	void	*mar5;
+	void	*pp1;
+	void	*pp2;
+	void	*pp3;
+	void	*pp4;
+	void	*pp5;
+	void	*ppr1;
+	void	*pr1;
+	void	*pr2;
+	void	*pr3;
+	void	*pr4;
+	void	*pr5;
+	void	*sh1;
+	void	*sh2;
+	void	*sh3;
+	void	*sh4;
+	void	*sh5;
+	void	*sh6;
+	void	*shr1;
+	void	*shr2;
+	void	*shr3;
+	void	*sn1;
+	void	*sn2;
+	void	*sn3;
+	void	*snr1;
+	void	*snr2;
+	void	*snr3;
 }				t_info;
 
 // utiles
@@ -143,4 +185,17 @@ int		buttonrelease(int button, int	x, int y, t_info *info);
 // xpm
 void	open_xpm(t_info *info);
 
+// animation
+void	fire_ar(t_info *info);
+void	cross_ar(t_info *info);
+void	reload_ar(t_info *info);
+void	fire_ma(t_info *info);
+void	cross_ma(t_info *info);
+void	reload_ma(t_info *info);
+void	fire_pp(t_info *info);
+void	fire_pr(t_info *info);
+void	fire_sh(t_info *info);
+void	reload_sh(t_info *info);
+void	fire_sn(t_info *info);
+void	reload_sn(t_info *info);
 #endif

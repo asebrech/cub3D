@@ -1,0 +1,7 @@
+NO ./textures/NO.xpm
+SO ./textures/SO.xpm
+WE ./textures/WE.xpm
+EA ./textures/EA.xpm
+
+F 96,96,96
+C 15,5,107

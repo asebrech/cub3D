@@ -6,7 +6,7 @@
 #    By: alois <alois@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/14 16:33:38 by alois            ###   ########.fr        #
+#    Updated: 2021/11/14 23:18:31 by alois            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,9 @@ SRCB =	bonus/main_bonus.c \
 		bonus/sprite_bonus.c \
 		bonus/event_bonus.c \
 		bonus/xpm_bonus.c \
+		bonus/animation_bonus.c \
+		bonus/ma_animation_bonus.c \
+		bonus/sh_animation_bonus.c \
 		bonus/utiles_bonus.c
 
 ifdef WHITH_BONUS

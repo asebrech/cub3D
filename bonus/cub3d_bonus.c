@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 19:06:31 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 23:24:43 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ int	key_hook(int keycode, t_info *info)
 		info->reload = 1;
 	if (keycode == 8)
 		info->cross = 1;
+	if (keycode == 18)
+		info->weapon = 1;
+	if (keycode == 19)
+		info->weapon = 2;
+	if (keycode == 20)
+		info->weapon = 3;
+	if (keycode == 21)
+		info->weapon = 4;
+	if (keycode == 23)
+		info->weapon = 5;
+	if (keycode == 22)
+		info->weapon = 6;
 	return (0);
 }
 
