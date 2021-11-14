@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 13:39:47 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 15:21:43 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,4 @@ void	dda(double *x, double *y, t_info *info)
 		y[0] = y[0] + yinc;
 		step--;
 	}	
-}
-
-int	ft_close(t_info *info)
-{
-	ft_exit(NULL, info, 0);
-	return (0);
-}
-
-int	render_next_frame(t_info *info)
-{
-	//int		x;
-	//int		y;
-
-	//mlx_mouse_get_pos(info->win, &x, &y);
-	info->mouse = info->mousex - (info->x / 2);
-	move(info);
-	mlx_mouse_move(info->win, info->x / 2, info->y / 2);
-	info->mousex = info->x / 2;
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 13:37:03 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 18:04:09 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	look_left(t_info *info, double v)
 	info->angle += v;
 	if (info->angle > 360.0)
 		info->angle -= 360.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	look_right(t_info *info, double v)
@@ -29,7 +29,7 @@ void	look_right(t_info *info, double v)
 	info->angle -= v;
 	if (info->angle < 0.0)
 		info->angle += 360.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	move_up(t_info *info, double cub, double angle)
@@ -53,7 +53,7 @@ void	move_up(t_info *info, double cub, double angle)
 		info->py = y;
 		info->minipy = y / 6.0;
 	}
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	move(t_info *info)
@@ -82,4 +82,5 @@ void	move(t_info *info)
 		move_up(info, cub, info->angle);
 	if (info->down)
 		move_up(info, cub, info->angle + 180);
+	print_screen(info);
 }

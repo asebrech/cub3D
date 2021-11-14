@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 13:03:46 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 18:23:03 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ typedef struct s_info
 	int		mouse;
 	int		mousex;
 	int		run;
+	int		weapon;
+	int		wp;
+	int		fire;
+	int		reload;
+	int		cross;
+	void	*ar1;
+	void	*ar2;
+	void	*ar3;
+	void	*arc1;
+	void	*arc2;
+	void	*arc3;
+	void	*arr1;
+	void	*arr2;
+	void	*arr3;
+	void	*arr4;
+	void	*arr5;
 }				t_info;
 
 // utiles
@@ -89,8 +105,6 @@ void	player_start(int i, int j, t_info *info);
 int		mlx_pixel_get(t_data *data, int x, int y);
 int		create_trgb(int t, int r, int g, int b);
 void	dda(double *x, double *y, t_info *info);
-int		ft_close(t_info *info);
-int		render_next_frame(t_info *info);
 
 // parsing
 void	ft_parsing(t_info *info);
@@ -116,5 +130,17 @@ void	final_wall_v(t_info *info, double *v, double angle);
 
 // sprite
 void	sprite(t_info *info);
+void	fire_ar(t_info *info);
+
+// event
+int		mouse(int x , int y, t_info *info);
+int		ft_close(t_info *info);
+int		render_next_frame(t_info *info);
+//int		mouse_hook(int button, int	x, int y, t_info *info);
+int		buttonpress(int button, int	x, int y, t_info *info);
+int		buttonrelease(int button, int	x, int y, t_info *info);
+
+// xpm
+void	open_xpm(t_info *info);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 13:13:41 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 18:23:24 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	fill_struct(t_info *info)
 	info->lookr = 0;
 	info->lookl = 0;
 	info->run = 0;
+	info->weapon = 1;
+	info->fire = 0;
+	info->reload = 0;
+	info->cross = 0;
 	info->map = NULL;
 	info->cno = NULL;
 	info->cso = NULL;
@@ -39,6 +43,7 @@ void	fill_struct(t_info *info)
 	info->fov = 60.0;
 	info->plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
 	info->mousex = info->x / 2; 
+	info->wp = (info->x / 2) - 500;
 }
 
 static void	check_arg(char *str, t_info *info)

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 13:40:07 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 19:06:31 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	key_hook(int keycode, t_info *info)
 		info->lookr = 1;
 	if (keycode == 257)
 		info->run = 1;
+	if (keycode == 15)
+		info->reload = 1;
+	if (keycode == 8)
+		info->cross = 1;
 	return (0);
 }
 
@@ -53,6 +57,10 @@ int	key_relese(int keycode, t_info *info)
 		info->lookr = 0;
 	if (keycode == 257)
 		info->run = 0;
+	if (keycode == 15)
+		info->reload = 0;
+	if (keycode == 8)
+		info->cross = 0;
 	return (0);
 }
 
@@ -74,25 +82,18 @@ void	get_xpm(t_info *info)
 			&info->ea.line_length, &info->ea.endian);
 	info->we.addr = mlx_get_data_addr(info->we.img, &info->we.bits_per_pixel,
 			&info->we.line_length, &info->we.endian);
+	open_xpm(info);
 }
 
 void	print_screen(t_info *info)
 {
-	info->img.img = mlx_new_image(info->mlx, info->x, info->y);
-	info->img.addr = mlx_get_data_addr(info->img.img, &info->img.bits_per_pixel,
-			&info->img.line_length, &info->img.endian);
+	mlx_clear_window(info->mlx, info->win);
+	
 	map(info);
 	minimap(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
-	mlx_destroy_image(info->mlx, info->img.img);
+	//mlx_destroy_image(info->mlx, info->img.img);
 	sprite(info);
-}
-
-int	mouse(int x , int y, t_info *info)
-{
-	info->mousex = x;
-	(void)y;
-	return (0);
 }
 
 void	cub3d(t_info *info)
@@ -101,12 +102,18 @@ void	cub3d(t_info *info)
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
 	mlx_hook(info->win, 3, 1L << 1, key_relese, info);
+	mlx_hook(info->win, 4, 1L << 2, buttonpress, info);
+	mlx_hook(info->win, 5, 1L << 3, buttonrelease, info);
+	//mlx_mouse_hook(info->win, buttonpress, info);
 	mlx_hook(info->win, 6, 1L << 7, mouse, info);
 	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
 	get_xpm(info);
 	mlx_mouse_hide();
 	mlx_mouse_move(info->win, info->x / 2.0, info->y / 2.0);
-	mlx_do_key_autorepeatoff(info->mlx);
+	//mlx_do_key_autorepeaton(info->mlx);
+	info->img.img = mlx_new_image(info->mlx, info->x, info->y);
+	info->img.addr = mlx_get_data_addr(info->img.img, &info->img.bits_per_pixel,
+			&info->img.line_length, &info->img.endian);
 	print_screen(info);
 	mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);

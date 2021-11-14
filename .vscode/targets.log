@@ -10,16 +10,16 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `srcs/main.o', needed by `cub3D'.  Stop.
  
 
-# Make data base, printed on Sun Nov 14 11:45:52 2021
+# Make data base, printed on Sun Nov 14 16:34:13 2021
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 48)
- 
+# makefile (from `Makefile', line 50)
 OBJ = $(SRC:.c=.o)
 # makefile (from `Makefile', line 19)
 SRC = srcs/main.c srcs/parsing.c srcs/parsing_resource.c srcs/parsing_map.c srcs/cub3d.c srcs/find_wall.c srcs/find_wall_1.c srcs/minimap.c srcs/move.c srcs/map.c srcs/utiles_1.c srcs/utiles.c
@@ -56,7 +56,7 @@ VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # makefile (from `Makefile', line 31)
-SRCB = bonus/main_bonus.c bonus/parsing_bonus.c bonus/parsing_resource_bonus.c bonus/parsing_map_bonus.c bonus/cub3d_bonus.c bonus/find_wall_bonus.c bonus/find_wall_1_bonus.c bonus/minimap_bonus.c bonus/move_bonus.c bonus/map_bonus.c bonus/utiles_1_bonus.c bonus/sprite_bonus.c bonus/utiles_bonus.c
+SRCB = bonus/main_bonus.c bonus/parsing_bonus.c bonus/parsing_resource_bonus.c bonus/parsing_map_bonus.c bonus/cub3d_bonus.c bonus/find_wall_bonus.c bonus/find_wall_1_bonus.c bonus/minimap_bonus.c bonus/move_bonus.c bonus/map_bonus.c bonus/utiles_1_bonus.c bonus/sprite_bonus.c bonus/event_bonus.c bonus/xpm_bonus.c bonus/utiles_bonus.c
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -114,6 +114,7 @@ LFLAGS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
+ 
 .VARIABLES := 
 # environment
 TMPDIR = /var/folders/rs/70hmxrnj3cv74z7d6bbmf33r0000gn/T/
@@ -164,9 +165,9 @@ VSCODE_PID = 9768
 
 # Directories
 
-# . (device 16777230, inode 603304): 14 files, no impossibilities.
+# . (device 16777230, inode 603304): 15 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -187,7 +188,6 @@ srcs/minimap.o:
 #  File has not been updated.
 
 all: cub3D
- 
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
@@ -209,11 +209,11 @@ srcs/find_wall_1.o:
 
 cub3D: srcs/main.o srcs/parsing.o srcs/parsing_resource.o srcs/parsing_map.o srcs/cub3d.o srcs/find_wall.o srcs/find_wall_1.o srcs/minimap.o srcs/move.o srcs/map.o srcs/utiles_1.o srcs/utiles.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2021-11-14 16:33:42
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 60):
+#  commands to execute (from `Makefile', line 62):
 	@make -C minilibx 
 	@make -C libft bonus
 	$(CC) $(CFLAGS) $(LFLAGS) -I$(HEADER) -Llibft -lft $(OBJ) -o $(NAME)
@@ -225,10 +225,11 @@ cub3D: srcs/main.o srcs/parsing.o srcs/parsing_resource.o srcs/parsing_map.o src
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-14 11:25:01
+#  Last modified 2021-11-14 16:33:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -245,7 +246,7 @@ bonus:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 57):
+#  commands to execute (from `Makefile', line 59):
 	@make WHITH_BONUS=1 all
 	
 
@@ -253,7 +254,7 @@ bonus:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 52):
+#  commands to execute (from `Makefile', line 54):
 	$(CC) $(CFLAGS) -I$(HEADER) -Iminilibx -c $< -o $(<:.c=.o)
 	
 
@@ -262,7 +263,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 69):
+#  commands to execute (from `Makefile', line 71):
 	@make -C minilibx clean 
 	@make -C libft fclean 
 	$(RM) $(NAME)
@@ -297,7 +298,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 65):
+#  commands to execute (from `Makefile', line 67):
 	@make -C libft clean
 	$(RM) */*.o
 	
@@ -353,6 +354,6 @@ srcs/find_wall.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Nov 14 11:45:52 2021
+# Finished Make data base on Sun Nov 14 16:34:13 2021
 
  
