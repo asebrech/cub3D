@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/13 17:58:20 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 13:03:46 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_info
 	int		lookr;
 	int		lookl;
 	int		mouse;
+	int		mousex;
 	int		run;
 }				t_info;
 

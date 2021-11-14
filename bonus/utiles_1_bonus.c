@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/13 18:39:46 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 13:39:47 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ int	ft_close(t_info *info)
 
 int	render_next_frame(t_info *info)
 {
-	int		x;
-	int		y;
+	//int		x;
+	//int		y;
 
-	mlx_mouse_get_pos(info->win, &x, &y);
-	info->mouse = x - (info->x / 2);
+	//mlx_mouse_get_pos(info->win, &x, &y);
+	info->mouse = info->mousex - (info->x / 2);
 	move(info);
 	mlx_mouse_move(info->win, info->x / 2, info->y / 2);
+	info->mousex = info->x / 2;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/13 18:00:20 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 13:13:41 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	fill_struct(t_info *info)
 	info->minicub = info->cub / 6.0;
 	info->fov = 60.0;
 	info->plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
+	info->mousex = info->x / 2; 
 }
 
 static void	check_arg(char *str, t_info *info)

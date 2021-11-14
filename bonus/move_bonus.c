@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/13 18:37:47 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 13:37:03 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	look_left(t_info *info, double v)
 {
 	if (abs(info->mouse) && info->mouse != 0)
-		v = (double)abs(info->mouse) / 10;
+		v = (double)abs(info->mouse) / 30;
 	info->angle += v;
 	if (info->angle > 360.0)
 		info->angle -= 360.0;
@@ -25,7 +25,7 @@ void	look_left(t_info *info, double v)
 void	look_right(t_info *info, double v)
 {
 	if (info->mouse && info->mouse != 0)
-		v = (double)info->mouse / 10;
+		v = (double)info->mouse / 30;
 	info->angle -= v;
 	if (info->angle < 0.0)
 		info->angle += 360.0;

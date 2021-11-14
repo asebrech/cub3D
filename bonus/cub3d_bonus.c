@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/13 18:39:39 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/14 13:40:07 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_hook(int keycode, t_info *info)
 {
-	printf("%d\n", keycode);
+	//printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(info->mlx, info->win);
@@ -88,7 +88,12 @@ void	print_screen(t_info *info)
 	sprite(info);
 }
 
-//void	mouse()
+int	mouse(int x , int y, t_info *info)
+{
+	info->mousex = x;
+	(void)y;
+	return (0);
+}
 
 void	cub3d(t_info *info)
 {
@@ -96,12 +101,12 @@ void	cub3d(t_info *info)
 	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
 	mlx_hook(info->win, 3, 1L << 1, key_relese, info);
-	//mlx_hook(info->win, 6, 1L << 6, mouse, info);
+	mlx_hook(info->win, 6, 1L << 7, mouse, info);
 	mlx_hook(info->win, 17, 1L << 15, ft_close, info);
 	get_xpm(info);
 	mlx_mouse_hide();
-	mlx_do_key_autorepeatoff(info->mlx);
 	mlx_mouse_move(info->win, info->x / 2.0, info->y / 2.0);
+	mlx_do_key_autorepeatoff(info->mlx);
 	print_screen(info);
 	mlx_loop_hook(info->mlx, render_next_frame, info);
 	mlx_loop(info->mlx);
