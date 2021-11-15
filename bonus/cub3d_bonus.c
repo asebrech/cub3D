@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 23:24:43 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 12:34:58 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	print_screen(t_info *info)
 	map(info);
 	minimap(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
+	mlx_put_image_to_window(info->mlx, info->win, info->hud, 0, 0);
 	//mlx_destroy_image(info->mlx, info->img.img);
 	sprite(info);
 }

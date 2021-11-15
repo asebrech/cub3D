@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 23:34:09 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 12:33:03 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_info
 	void	*snr1;
 	void	*snr2;
 	void	*snr3;
+	void	*hud;
 }				t_info;
 
 // utiles

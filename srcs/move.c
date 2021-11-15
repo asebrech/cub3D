@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 19:40:56 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:46:02 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	look_left(t_info *info, double v)
 	info->angle += v;
 	if (info->angle > 360.0)
 		info->angle -= 360.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	look_right(t_info *info, double v)
@@ -25,7 +25,7 @@ void	look_right(t_info *info, double v)
 	info->angle -= v;
 	if (info->angle < 0.0)
 		info->angle += 360.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	move_up(t_info *info, double cub, double mini, double angle)
@@ -34,7 +34,7 @@ void	move_up(t_info *info, double cub, double mini, double angle)
 	info->py = round(sin(to_radian(angle)) * cub) * -1.0 + info->py;
 	info->minipx = round(cos(to_radian(angle)) * mini) + info->px / 6.0;
 	info->minipy = round(sin(to_radian(angle)) * mini) * -1.0 + info->py / 6.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	move_down(t_info *info, double cub, double mini, double angle)
@@ -43,7 +43,7 @@ void	move_down(t_info *info, double cub, double mini, double angle)
 	info->py = round(sin(to_radian(angle)) * cub) + info->py;
 	info->minipx = round(cos(to_radian(angle)) * mini) * -1.0 + info->px / 6.0;
 	info->minipy = round(sin(to_radian(angle)) * mini) + info->py / 6.0;
-	print_screen(info);
+	//print_screen(info);
 }
 
 void	move(t_info *info)
@@ -69,4 +69,5 @@ void	move(t_info *info)
 		move_up(info, cub, mini, info->angle);
 	if (info->down)
 		move_down(info, cub, mini, info->angle);
+	print_screen(info);
 }

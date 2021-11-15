@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/10 15:52:52 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/15 11:27:38 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,6 @@ void	ft_parsing(t_info *info)
 	}
 	close(fd);
 	parse_map(info, info->lst);
+	if (!info->player)
+		ft_exit("there must be at least one player\n", info, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/14 18:23:24 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 12:08:35 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	fill_struct(t_info *info)
 	info->cso = NULL;
 	info->cwe = NULL;
 	info->cea = NULL;
+	info->lst = NULL;
+	info->map = NULL;
+	info->player = 0;
 	info->fr = -1;
 	info->fg = -1;
 	info->fb = -1;

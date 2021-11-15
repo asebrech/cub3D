@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 15:40:30 by alois             #+#    #+#             */
-/*   Updated: 2021/11/14 23:28:09 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 12:34:22 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	xpm_magnum(t_info *info)
 
 void	open_xpm(t_info *info)
 {
+	info->hud = mlx_xpm_file_to_image(info->mlx, "./halo/HUD.xpm", &info->w, &info->h);
 	info->ar1 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR1.xpm", &info->w, &info->h);
 	info->ar2 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR2.xpm", &info->w, &info->h);
 	info->ar3 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR3.xpm", &info->w, &info->h);
