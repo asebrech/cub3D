@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 23:11:19 by alois             #+#    #+#             */
-/*   Updated: 2021/11/20 17:38:30 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 20:32:25 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void	reload_sn(t_info *info)
 {
 	static	int i = 1;
 
-	if (i < 18)
+	if (i < 15)
 		mlx_put_image_to_window(info->mlx, info->win, info->snr1, info->wp, 0);
-	else if (i < 32)
+	else if (i < 30)
 		mlx_put_image_to_window(info->mlx, info->win, info->snr2, info->wp, 0);
-	else if (i <= 46)
+	else if (i <= 45)
 		mlx_put_image_to_window(info->mlx, info->win, info->snr3, info->wp, 0);
 	i++;
-	if (i > 35)
+	if (i > 45)
 	{
 		i = 1;
 		info->sn = 4;

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:57:23 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 13:45:08 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 20:08:45 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_exit(char *str, t_info *info, int index)
 	if (info->lst)
 		ft_lstclear(&info->lst, free);
 	free(info->map);
-	(void)info;
 	exit(index);
 }
 

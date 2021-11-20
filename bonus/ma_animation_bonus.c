@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:52:33 by alois             #+#    #+#             */
-/*   Updated: 2021/11/20 18:12:51 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 19:52:58 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void	cross_ma(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac1, info->wp, 0);
 	else if (i < 10)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac2, info->wp, 0);
-	else if (i <= 16)
+	else if (i <= 15)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac3, info->wp, 0);
-	else if (i <= 24)
+	else if (i <= 25)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac4, info->wp, 0);
-	else if (i <= 32)
+	else if (i <= 35)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac5, info->wp, 0);
-	else if (i <= 40)
+	else if (i <= 45)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac6, info->wp, 0);
-	else if (i <= 48)
+	else if (i <= 55)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac7, info->wp, 0);
 
 	i++;
-	if (i > 48)
+	if (i > 55)
 		i = 1;
 }
 

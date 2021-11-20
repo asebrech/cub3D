@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 18:05:30 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 19:04:47 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,12 @@ typedef struct s_info
 	void	*snr2;
 	void	*snr3;
 	void	*hud;
+	void	*har;
+	void	*hma;
+	void	*hpp;
+	void	*hpr;
+	void	*hsh;
+	void	*hsn;
 	int		ar;
 	int		ma;
 	int		pp;

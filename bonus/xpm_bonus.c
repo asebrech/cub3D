@@ -6,11 +6,22 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 15:40:30 by alois             #+#    #+#             */
-/*   Updated: 2021/11/20 18:05:16 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 20:13:31 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+
+void	xpm_hud(t_info *info)
+{
+	info->hud = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HUD.xpm", &info->w, &info->h);
+	info->har = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HAR.xpm", &info->w, &info->h);
+	info->hma = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HMA.xpm", &info->w, &info->h);
+	info->hpp = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HPP.xpm", &info->w, &info->h);
+	info->hpr = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HPR.xpm", &info->w, &info->h);
+	info->hsh = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HSH.xpm", &info->w, &info->h);
+	info->hsn = mlx_xpm_file_to_image(info->mlx, "./halo/HUD/HSN.xpm", &info->w, &info->h);
+}
 
 void	xpm_shotgun(t_info *info)
 {
@@ -29,6 +40,7 @@ void	xpm_shotgun(t_info *info)
 	info->snr1 = mlx_xpm_file_to_image(info->mlx, "./halo/SN/SNR1.xpm", &info->w, &info->h);
 	info->snr2 = mlx_xpm_file_to_image(info->mlx, "./halo/SN/SNR2.xpm", &info->w, &info->h);
 	info->snr3 = mlx_xpm_file_to_image(info->mlx, "./halo/SN/SNR3.xpm", &info->w, &info->h);
+	xpm_hud(info);
 }
 
 void	xpm_ppistol(t_info *info)
@@ -71,7 +83,6 @@ void	xpm_magnum(t_info *info)
 
 void	open_xpm(t_info *info)
 {
-	info->hud = mlx_xpm_file_to_image(info->mlx, "./halo/HUD.xpm", &info->w, &info->h);
 	info->ar1 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR1.xpm", &info->w, &info->h);
 	info->ar2 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR2.xpm", &info->w, &info->h);
 	info->ar3 = mlx_xpm_file_to_image(info->mlx, "./halo/AR/AR3.xpm", &info->w, &info->h);

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:44:56 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 18:05:57 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 20:32:37 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sniper(t_info *info)
 	static	int	k = 0;
 
 	if (i == 0 && k == 0 && info->reload == 1 && info->weapon == 6 && info->sn != 4)
-		i = 35;
+		i = 45;
 	else if (i == 0 && k == 0 && info->fire == 1 && info->weapon == 6 && info->sn)
 		k = 12;
 	if (i > 0 && info->weapon == 6)
@@ -119,7 +119,7 @@ void	magnum(t_info *info)
 	if (i == 0 && j == 0 && k == 0 && info->reload == 1 && info->weapon == 2 && info->ma != 8)
 		i = 50;
 	else if (j == 0 && j == 0 && k == 0 && info->cross == 1 && info->weapon == 2)
-		j = 48;
+		j = 55;
 	else if (j == 0 && j == 0 && k == 0 && info->fire == 1 && info->weapon == 2 && info->ma > 0)
 		k = 12;
 	if (i > 0 && info->weapon == 2)

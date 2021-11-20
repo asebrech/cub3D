@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 17:39:00 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 20:28:48 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,22 @@ void	dda(double *x, double *y, t_info *info)
 	}	
 }
 
+void	display_weapon(t_info *info)
+{
+	if (info->weapon == 1)
+		mlx_put_image_to_window(info->mlx, info->win, info->har, 1500, 40);
+	else if (info->weapon == 2)
+		mlx_put_image_to_window(info->mlx, info->win, info->hma, 1570, 40);
+	else if (info->weapon == 3)
+		mlx_put_image_to_window(info->mlx, info->win, info->hpp, 1560, 40);
+	else if (info->weapon == 4)
+		mlx_put_image_to_window(info->mlx, info->win, info->hpr, 1540, 40);
+	else if (info->weapon == 5)
+		mlx_put_image_to_window(info->mlx, info->win, info->hsh, 1495, 50);
+	else if (info->weapon == 6)
+		mlx_put_image_to_window(info->mlx, info->win, info->hsn, 1490, 40);
+}
+
 void	display_ammo(t_info *info)
 {
 	char	*c;
@@ -68,7 +84,7 @@ void	display_ammo(t_info *info)
 	else if (info->weapon == 3 && info->pp)
 		c = ft_itoa(info->pp);
 	else if (info->weapon == 4 && info->pr == 0)
-		mlx_string_put(info->mlx, info->win, 1600, 65, 0x00FF0000, "OVERLOAD");
+		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, "OVERHEAT");
 	else if (info->weapon == 4 && info->pr)
 		c = ft_itoa(info->pr);
 	else if (info->weapon == 5 && info->sh)
@@ -76,12 +92,16 @@ void	display_ammo(t_info *info)
 	else if (info->weapon == 6 && info->sn)
 		c = ft_itoa(info->sn);
 	else
-		mlx_string_put(info->mlx, info->win, 1600, 65, 0x00FF0000, "RELOAD");
+		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, "RELOAD");
 	if (c)
 	{
-		tmp = ft_strjoin(c, " =>");
-		mlx_string_put(info->mlx, info->win, 1600, 65, 0x00FF0000, tmp);
+		if (info->weapon == 3 || info->weapon == 4)
+			tmp = ft_strjoin(c, "%");
+		else
+			tmp = ft_strjoin(c, "");
+		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, tmp);
 	}
 	free(tmp);
 	free(c);
+	display_weapon(info);
 }
