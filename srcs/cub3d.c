@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 11:53:07 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 17:45:12 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/11/15 14:33:12 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	print_screen(t_info *info)
 	info->img.addr = mlx_get_data_addr(info->img.img, &info->img.bits_per_pixel,
 			&info->img.line_length, &info->img.endian);
 	map(info);
+	//minimap(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 	mlx_destroy_image(info->mlx, info->img.img);
 }

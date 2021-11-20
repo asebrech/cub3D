@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:50 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 12:34:58 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 18:20:34 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,20 @@ void	get_xpm(t_info *info)
 
 void	print_screen(t_info *info)
 {
-	mlx_clear_window(info->mlx, info->win);
-	
+	mlx_clear_window(info->mlx, info->win);	
 	map(info);
 	minimap(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 	mlx_put_image_to_window(info->mlx, info->win, info->hud, 0, 0);
 	//mlx_destroy_image(info->mlx, info->img.img);
 	sprite(info);
+	display_ammo(info);
 }
 
 void	cub3d(t_info *info)
 {
 	info->mlx = mlx_init();
-	info->win = mlx_new_window(info->mlx, info->x, info->y, "cub3D");
+	info->win = mlx_new_window(info->mlx, info->x, info->y, "HALO");
 	mlx_hook(info->win, 2, 1L << 0, key_hook, info);
 	mlx_hook(info->win, 3, 1L << 1, key_relese, info);
 	mlx_hook(info->win, 4, 1L << 2, buttonpress, info);

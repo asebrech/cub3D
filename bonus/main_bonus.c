@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 12:08:35 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:36:38 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	fill_struct(t_info *info)
 	info->fire = 0;
 	info->reload = 0;
 	info->cross = 0;
+	info->ar = 32;
+	info->ma = 8;
+	info->pp = 100;
+	info->pr = 100;
+	info->sh = 12;
+	info->sn = 4;
 	info->map = NULL;
 	info->cno = NULL;
 	info->cso = NULL;

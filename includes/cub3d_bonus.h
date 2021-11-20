@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 12:33:03 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:36:20 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,12 @@ typedef struct s_info
 	void	*snr2;
 	void	*snr3;
 	void	*hud;
+	int		ar;
+	int		ma;
+	int		pp;
+	int		pr;
+	int		sh;
+	int		sn;
 }				t_info;
 
 // utiles
@@ -165,6 +171,7 @@ void	minimap(t_info *info);
 void	find_wall(t_info *info, double angle);
 void	print_screen(t_info *info);
 void	map(t_info *info);
+void	display_ammo(t_info *info);
 
 // find wall
 int		find_v(t_info *info, double *v, double angle);

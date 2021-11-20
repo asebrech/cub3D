@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:18:15 by alois             #+#    #+#             */
-/*   Updated: 2021/11/14 22:39:53 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 18:46:07 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ void	fire_ar(t_info *info)
 {
 	static	int i = 1;
 
-	if (i < 3)
-		mlx_put_image_to_window(info->mlx, info->win, info->ar1, info->wp, 0);
-	else if (i < 6)
+	if (i <= 4)
 		mlx_put_image_to_window(info->mlx, info->win, info->ar2, info->wp, 0);
-	else if (i <= 9)
+	else if (i <= 8)
 		mlx_put_image_to_window(info->mlx, info->win, info->ar3, info->wp, 0);
 	i++;
-	if (i > 9)
+	if (i > 8)
+	{
 		i = 1;
+		info->ar--;
+	}
+	if (i == 4)
+		info->ar--;
 }
 
 void	cross_ar(t_info *info)
@@ -59,7 +62,10 @@ void	reload_ar(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->arr5, info->wp, 0);
 	i++;
 	if (i > 50)
+	{
 		i = 1;
+		info->ar = 32;
+	}
 }
 
 void	fire_pp(t_info *info)
@@ -78,5 +84,11 @@ void	fire_pp(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->pp5, info->wp, 0);
 	i++;
 	if (i > 10)
+	{
 		i = 1;
+		if (info->pp - 8 < 0)
+			info->pp = 0;
+		else
+			info->pp -= 8;
+	}
 }

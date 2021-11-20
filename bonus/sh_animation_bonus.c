@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 23:11:19 by alois             #+#    #+#             */
-/*   Updated: 2021/11/14 23:36:27 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:38:30 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	fire_sh(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->sh6, info->wp, 0);
 	i++;
 	if (i > 12)
+	{
 		i = 1;
+		info->sh--;
+	}
 }
 
 void	reload_sh(t_info *info)
@@ -45,7 +48,10 @@ void	reload_sh(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->shr3, info->wp, 0);
 	i++;
 	if (i > 30)
+	{
 		i = 1;
+		info->sh++;
+	}
 }
 
 void	fire_sn(t_info *info)
@@ -60,7 +66,10 @@ void	fire_sn(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->sn3, info->wp, 0);
 	i++;
 	if (i > 12)
+	{
 		i = 1;
+		info->sn--;
+	}
 }
 
 void	reload_sn(t_info *info)
@@ -75,5 +84,8 @@ void	reload_sn(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->snr3, info->wp, 0);
 	i++;
 	if (i > 35)
+	{
 		i = 1;
+		info->sn = 4;
+	}
 }

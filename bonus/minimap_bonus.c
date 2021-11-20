@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:36:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 13:36:22 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/15 17:19:21 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	player_pos(t_info *info)
 	int		x;
 	int		y;
 
-	x = info->minipx - info->minicub / 4;
-	y = info->minipy - info->minicub / 4;
+	x = info->minipx - info->minicub / 4.0;
+	y = info->minipy - info->minicub / 4.0;
 	i = -1;
 	while (++i < info->minicub / 2.0)
 	{
@@ -50,7 +50,7 @@ void	player_pos(t_info *info)
 void	very_dumb_norm(t_info *info, int k, int x, int y)
 {
 	if (x + k < info->x && y < info->y)
-		my_mlx_pixel_put(&info->img, x + k, y, 0xb3b3ff);
+		my_mlx_pixel_put(&info->img, x + k, y, 0xD0D0D0);
 }
 
 void	print_wall(int i, int j, t_info *info, int bool)
@@ -71,7 +71,7 @@ void	print_wall(int i, int j, t_info *info, int bool)
 			if (bool)
 			{
 				if (x + k < info->x && y < info->y)
-					my_mlx_pixel_put(&info->img, x + k, y, 0x4646b9);
+					my_mlx_pixel_put(&info->img, x + k, y, 0x4682B4);
 			}
 			else
 				very_dumb_norm(info, k, x, y);
