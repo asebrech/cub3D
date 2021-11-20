@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:44:56 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 17:39:24 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 18:05:57 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	prifle(t_info *info)
 		j--;
 	}
 	else if (k > 0 && info->weapon == 4)
-		mlx_put_image_to_window(info->mlx, info->win, info->pr5, info->wp, 0);
+		mlx_put_image_to_window(info->mlx, info->win, info->pr6, info->wp, 0);
 	else if (info->weapon == 4)
 		mlx_put_image_to_window(info->mlx, info->win, info->pr1, info->wp, 0);
 	shotgun(info);	

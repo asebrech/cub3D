@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 15:40:30 by alois             #+#    #+#             */
-/*   Updated: 2021/11/15 12:34:22 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 18:05:16 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	xpm_ppistol(t_info *info)
 	info->pr3 = mlx_xpm_file_to_image(info->mlx, "./halo/PR/PR3.xpm", &info->w, &info->h);
 	info->pr4 = mlx_xpm_file_to_image(info->mlx, "./halo/PR/PR4.xpm", &info->w, &info->h);
 	info->pr5 = mlx_xpm_file_to_image(info->mlx, "./halo/PR/PR5.xpm", &info->w, &info->h);
+	info->pr6 = mlx_xpm_file_to_image(info->mlx, "./halo/PR/PR6.xpm", &info->w, &info->h);
 	xpm_shotgun(info);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 17:36:20 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/20 18:05:30 by alois            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_info
 	void	*pr3;
 	void	*pr4;
 	void	*pr5;
+	void	*pr6;
 	void	*sh1;
 	void	*sh2;
 	void	*sh3;
