@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:55:01 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 17:16:14 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 14:59:34 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	look_left(t_info *info, double v)
 	info->angle += v;
 	if (info->angle > 360.0)
 		info->angle -= 360.0;
-	//print_screen(info);
 }
 
 void	look_right(t_info *info, double v)
@@ -29,7 +28,6 @@ void	look_right(t_info *info, double v)
 	info->angle -= v;
 	if (info->angle < 0.0)
 		info->angle += 360.0;
-	//print_screen(info);
 }
 
 void	move_up(t_info *info, double cub, double angle)
@@ -53,7 +51,6 @@ void	move_up(t_info *info, double cub, double angle)
 		info->py = y;
 		info->minipy = y / 6.0;
 	}
-	//print_screen(info);
 }
 
 void	move(t_info *info)

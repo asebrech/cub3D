@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_1_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:22:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 20:28:48 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 16:00:28 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,18 @@ void	dda(double *x, double *y, t_info *info)
 	}	
 }
 
-void	display_weapon(t_info *info)
+void	display_weapon(t_info *info, char *c, char *tmp)
 {
+	if (c)
+	{
+		if (info->weapon == 3 || info->weapon == 4)
+			tmp = ft_strjoin(c, "%");
+		else
+			tmp = ft_strjoin(c, "");
+		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, tmp);
+	}
+	free(tmp);
+	free(c);
 	if (info->weapon == 1)
 		mlx_put_image_to_window(info->mlx, info->win, info->har, 1500, 40);
 	else if (info->weapon == 2)
@@ -93,15 +103,5 @@ void	display_ammo(t_info *info)
 		c = ft_itoa(info->sn);
 	else
 		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, "RELOAD");
-	if (c)
-	{
-		if (info->weapon == 3 || info->weapon == 4)
-			tmp = ft_strjoin(c, "%");
-		else
-			tmp = ft_strjoin(c, "");
-		mlx_string_put(info->mlx, info->win, 1700, 65, 0x00FF0000, tmp);
-	}
-	free(tmp);
-	free(c);
-	display_weapon(info);
+	display_weapon(info, c, tmp);
 }

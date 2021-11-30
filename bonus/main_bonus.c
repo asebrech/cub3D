@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 17:36:38 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:33:37 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,7 @@ void	fill_struct(t_info *info)
 	info->map = NULL;
 	info->cno = NULL;
 	info->cso = NULL;
-	info->cwe = NULL;
-	info->cea = NULL;
-	info->lst = NULL;
-	info->map = NULL;
-	info->player = 0;
-	info->fr = -1;
-	info->fg = -1;
-	info->fb = -1;
-	info->cr = -1;
-	info->cg = -1;
-	info->cb = -1;
-	info->x = 1800.0;
-	info->y = 1000.0;
-	info->cub = 64.0;
-	info->minicub = info->cub / 6.0;
-	info->fov = 60.0;
-	info->plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
-	info->mousex = info->x / 2; 
-	info->wp = (info->x / 2) - 500;
+	fucking_dumb_norm(info);
 }
 
 static void	check_arg(char *str, t_info *info)

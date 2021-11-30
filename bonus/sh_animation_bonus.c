@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh_animation_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 23:11:19 by alois             #+#    #+#             */
-/*   Updated: 2021/11/20 20:32:25 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:18:11 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fire_sh(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 2)
 		mlx_put_image_to_window(info->mlx, info->win, info->sh1, info->wp, 0);
@@ -38,7 +38,7 @@ void	fire_sh(t_info *info)
 
 void	reload_sh(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 10)
 		mlx_put_image_to_window(info->mlx, info->win, info->shr1, info->wp, 0);
@@ -56,7 +56,7 @@ void	reload_sh(t_info *info)
 
 void	fire_sn(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 4)
 		mlx_put_image_to_window(info->mlx, info->win, info->sn1, info->wp, 0);
@@ -74,7 +74,7 @@ void	fire_sn(t_info *info)
 
 void	reload_sn(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 15)
 		mlx_put_image_to_window(info->mlx, info->win, info->snr1, info->wp, 0);

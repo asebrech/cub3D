@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:18:15 by alois             #+#    #+#             */
-/*   Updated: 2021/11/15 18:46:07 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 14:54:57 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fire_ar(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i <= 4)
 		mlx_put_image_to_window(info->mlx, info->win, info->ar2, info->wp, 0);
@@ -32,7 +32,7 @@ void	fire_ar(t_info *info)
 
 void	cross_ar(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 10)
 		mlx_put_image_to_window(info->mlx, info->win, info->arc1, info->wp, 0);
@@ -47,9 +47,8 @@ void	cross_ar(t_info *info)
 
 void	reload_ar(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
-	//printf("reload %d\n", i);
 	if (i < 10)
 		mlx_put_image_to_window(info->mlx, info->win, info->arr1, info->wp, 0);
 	else if (i < 20)
@@ -70,7 +69,7 @@ void	reload_ar(t_info *info)
 
 void	fire_pp(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 2)
 		mlx_put_image_to_window(info->mlx, info->win, info->pp1, info->wp, 0);

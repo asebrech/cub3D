@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/20 19:04:47 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 16:08:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,12 +190,12 @@ void	sprite(t_info *info);
 void	fire_ar(t_info *info);
 
 // event
-int		mouse(int x , int y, t_info *info);
+int		mouse(int x, int y, t_info *info);
 int		ft_close(t_info *info);
 int		render_next_frame(t_info *info);
 //int		mouse_hook(int button, int	x, int y, t_info *info);
-int		buttonpress(int button, int	x, int y, t_info *info);
-int		buttonrelease(int button, int	x, int y, t_info *info);
+int		buttonpress(int button, int x, int y, t_info *info);
+int		buttonrelease(int button, int x, int y, t_info *info);
 
 // xpm
 void	open_xpm(t_info *info);
@@ -213,4 +213,14 @@ void	fire_sh(t_info *info);
 void	reload_sh(t_info *info);
 void	fire_sn(t_info *info);
 void	reload_sn(t_info *info);
+
+// norminette
+void	key_hook_norm(int keycode, t_info *info);
+void	fucking_dumb_norm(t_info *info);
+void	sprite_norm(t_info *info, int *i, int *j, int *k);
+void	sniper(t_info *info);
+void	magnum_norm(t_info *info, int *i, int *j, int *k);
+void	prifle_norm(t_info *info, int *k, int *j);
+void	xpm_norm(t_info *info);
+void	xpm_norminette(t_info *info);
 #endif

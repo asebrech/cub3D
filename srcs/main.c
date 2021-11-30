@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 10:27:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 14:31:01 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 14:47:39 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,7 @@ void	fill_struct(t_info *info)
 	info->lst = NULL;
 	info->map = NULL;
 	info->player = 0;
-	info->fr = -1;
-	info->fg = -1;
-	info->fb = -1;
-	info->cr = -1;
-	info->cg = -1;
-	info->cb = -1;
-	info->x = 1800.0;
-	info->y = 1000.0;
-	info->cub = 64.0;
-	info->minicub = info->cub / 6.0;
-	info->fov = 60.0;
-	info->plane = round((info->x / 2.0) / tan(to_radian(info->fov / 2.0)));
+	fuck_the_norm(info);
 }
 
 static void	check_arg(char *str, t_info *info)

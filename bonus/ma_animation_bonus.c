@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ma_animation_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:52:33 by alois             #+#    #+#             */
-/*   Updated: 2021/11/20 19:52:58 by alois            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:15:20 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fire_ma(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 3)
 		mlx_put_image_to_window(info->mlx, info->win, info->ma1, info->wp, 0);
@@ -34,7 +34,7 @@ void	fire_ma(t_info *info)
 
 void	cross_ma(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i < 5)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac1, info->wp, 0);
@@ -50,7 +50,6 @@ void	cross_ma(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac6, info->wp, 0);
 	else if (i <= 55)
 		mlx_put_image_to_window(info->mlx, info->win, info->mac7, info->wp, 0);
-
 	i++;
 	if (i > 55)
 		i = 1;
@@ -58,9 +57,8 @@ void	cross_ma(t_info *info)
 
 void	reload_ma(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
-	//printf("reload %d\n", i);
 	if (i < 10)
 		mlx_put_image_to_window(info->mlx, info->win, info->mar1, info->wp, 0);
 	else if (i < 20)
@@ -81,7 +79,7 @@ void	reload_ma(t_info *info)
 
 void	fire_pr(t_info *info)
 {
-	static	int i = 1;
+	static int	i = 1;
 
 	if (i <= 4)
 		mlx_put_image_to_window(info->mlx, info->win, info->pr2, info->wp, 0);
