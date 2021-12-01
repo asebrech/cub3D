@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/12/01 11:45:32 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:51:11 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ void	ft_parsing(t_info *info)
 	close(fd);
 	parse_map(info, info->lst);
 	if (!info->player)
-		ft_exit("there must be at least one player\n", info, 1);
+		ft_exit("map must have at least one player\n", info, 1);
 }

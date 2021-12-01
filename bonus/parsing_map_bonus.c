@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/12/01 13:08:02 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:50:32 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	lst_to_char(t_info *info, t_list *lst)
 
 	i = 0;
 	tmp = lst;
+	if (!tmp)
+		ft_exit("ressource file must have a map\n", info, 1);
 	while (tmp->next && ++i)
 		tmp = tmp->next;
 	info->map = malloc(sizeof(char *) * (i + 2));
