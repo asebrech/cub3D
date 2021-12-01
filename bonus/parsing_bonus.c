@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alois <alois@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 15:32:06 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/15 11:27:03 by alois            ###   ########.fr       */
+/*   Updated: 2021/12/01 11:45:32 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,11 @@ int	parse_line(t_info *info, char *line)
 	return (0);
 }
 
-void	get_map(t_list **alst, char *line, t_info *info)
+void	get_map(t_list **alst, char *line)
 {
 	t_list		*new;
 	static int	i = 0;
-	int			j;
 
-	j = 0;
-	while (line[j] && ft_isspace(line[j]))
-		j++;
-	if (line[j] == '\0')
-		ft_exit("forbidden new line in the map\n", info, 1);
 	if (i == 0)
 		*alst = ft_lstnew(line);
 	else
@@ -75,7 +69,7 @@ void	dumb_norm(t_info *info, char *line, t_list **lst, int *j)
 {
 	if (parse_line(info, line))
 	{
-		get_map(lst, line, info);
+		get_map(lst, line);
 		*j = 1;
 	}
 	else
@@ -98,7 +92,7 @@ void	ft_parsing(t_info *info)
 		if (!j)
 			dumb_norm(info, line, &info->lst, &j);
 		else
-			get_map(&info->lst, line, info);
+			get_map(&info->lst, line);
 	}
 	close(fd);
 	parse_map(info, info->lst);
