@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/12/01 12:26:15 by asebrech         ###   ########.fr        #
+#    Updated: 2021/12/01 13:03:50 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC =	srcs/main.c \
 		srcs/move.c \
 		srcs/map.c \
 		srcs/utiles_1.c \
+		srcs/norm.c \
 		srcs/utiles.c
 SRCB =	bonus/main_bonus.c \
 		bonus/parsing_bonus.c \

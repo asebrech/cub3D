@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 17:52:33 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/11 19:20:27 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:08:02 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,13 @@ void	parse_map(t_info *info, t_list *lst)
 		while (info->map[i][++j])
 		{
 			check_char(info, i, j);
-			if (info->map[i][j] == '0' || (info->map[i][j] == 'N' && c++)
-				|| (info->map[i][j] == 'S' && c++)
-				|| (info->map[i][j] == 'E' && c++)
-				|| (info->map[i][j] == 'W' && c++))
+			if (pars_norm(info, &c, i, j))
+			{
 				if (check_up_down(info, i, j)
 					|| check_left_right(info, i, j) || c > 1)
 					ft_exit("wall is not closed or duplicated spawn character\n",
 						info, 1);
+			}
 		}
 	}
 }

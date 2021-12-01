@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:25:55 by asebrech          #+#    #+#             */
-/*   Updated: 2021/12/01 12:25:58 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:08:38 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,20 @@ void	xpm_norminette(t_info *info)
 			"./halo/SN/SNR2.xpm", &info->w, &info->h);
 	info->snr3 = mlx_xpm_file_to_image(info->mlx,
 			"./halo/SN/SNR3.xpm", &info->w, &info->h);
+}
+
+int	pars_norm(t_info *info, int *c, int i, int j)
+{
+	if ((info->map[i][j] == 'N')
+			|| (info->map[i][j] == 'S')
+			|| (info->map[i][j] == 'E')
+			|| (info->map[i][j] == 'W'))
+	{
+		*c += 1;
+		return (1);
+	}
+	else if (info->map[i][j] == '0')
+		return (1);
+	else
+		return (0);
 }

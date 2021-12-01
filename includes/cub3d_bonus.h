@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/30 16:08:03 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:09:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,4 +223,5 @@ void	magnum_norm(t_info *info, int *i, int *j, int *k);
 void	prifle_norm(t_info *info, int *k, int *j);
 void	xpm_norm(t_info *info);
 void	xpm_norminette(t_info *info);
+int		pars_norm(t_info *info, int *c, int i, int j);
 #endif

@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:32:11 by asebrech          #+#    #+#             */
-/*   Updated: 2021/11/30 14:45:19 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:06:31 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	dda(double *x, double *y, t_info *info);
 int		ft_close(t_info *info);
 int		render_next_frame(t_info *info);
 void	fuck_the_norm(t_info *info);
+int		pars_norm(t_info *info, int *c, int i, int j);
 
 // parsing
 void	ft_parsing(t_info *info);
