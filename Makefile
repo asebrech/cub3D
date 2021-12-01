@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/11/30 15:54:51 by asebrech         ###   ########.fr        #
+#    Updated: 2021/12/01 12:26:15 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCB =	bonus/main_bonus.c \
 		bonus/ma_animation_bonus.c \
 		bonus/sh_animation_bonus.c \
 		bonus/norminette_bonus.c \
-		bonus/norminette_bonus_1.c \
+		bonus/norminette_1_bonus.c \
 		bonus/utiles_bonus.c
 
 ifdef WHITH_BONUS
